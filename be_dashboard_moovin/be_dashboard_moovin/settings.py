@@ -16,7 +16,7 @@ DB_USER = os.getenv('Db_USER')
 DB_PASSWORD = os.getenv('Db_PASSWORD')
 DB_PORT = os.getenv('Db_PORT')
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-AI_API_KEY = os.getenv('AI_API')
+AI_API = os.getenv('AI_API')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
