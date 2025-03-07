@@ -97,6 +97,7 @@ def text_to_sql(request):
             ],
             max_tokens=150
         )
+        print(response)
         sql_query = response['choices'][0]['message']['content']
 
         # Ejecutar la consulta SQL en la base de datos
