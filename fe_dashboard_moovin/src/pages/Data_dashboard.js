@@ -10,6 +10,55 @@ const Dashboard_page = () => {
   const [chartOption, setChartOption] = useState(null);
 
   const send_request = async () => {
+
+    // Datos proporcionados
+const clientes = [
+  { id_cliente: 1, nombre: "Juan", fecha_ingreso: "2023-01-10" },
+  { id_cliente: 2, nombre: "María", fecha_ingreso: "2023-02-15" },
+  { id_cliente: 3, nombre: "Carlos", fecha_ingreso: "2023-03-20" },
+  { id_cliente: 4, nombre: "Ana", fecha_ingreso: "2023-04-25" },
+  { id_cliente: 5, nombre: "Pedro", fecha_ingreso: "2023-05-30" },
+  { id_cliente: 6, nombre: "Sofía", fecha_ingreso: "2023-06-05" },
+  { id_cliente: 7, nombre: "Diego", fecha_ingreso: "2023-06-10" },
+  { id_cliente: 8, nombre: "Diego", fecha_ingreso: "2023-07-10" }
+];
+
+// Procesar datos para agrupar clientes por mes
+const meses = [
+  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+  "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
+
+const conteoPorMes = Array(12).fill(0);
+
+clientes.forEach(cliente => {
+  const mes = new Date(cliente.fecha_ingreso).getMonth(); // Extraer el mes (0-11)
+  conteoPorMes[mes]++;
+});
+
+// Configuración de ECharts
+const option = {
+  title: {
+      text: 'Clientes ingresados por mes'
+  },
+  tooltip: {},
+  xAxis: {
+      type: 'category',
+      data: meses.slice(0, 7) // Mostramos solo los meses con datos
+  },
+  yAxis: {
+      type: 'value'
+  },
+  series: [
+      {
+          name: 'Clientes',
+          type: 'bar',
+          data: conteoPorMes.slice(0, 7) // Solo los meses con datos
+      }
+  ]
+};
+
+
     try {
       const response = await fetch_specific_data(graphic_requested);
       console.log("Data", response.results);
@@ -25,22 +74,7 @@ const Dashboard_page = () => {
         return datos;
       }
 
-      // Aquí puedes transformar los datos recibidos en las opciones del gráfico
-      const option = {
-        title: {
-          text: 'Ejemplo de Gráfico'
-        },
-        tooltip: {},
-        xAxis: {
-          data: load_base_data()
-        },
-        yAxis: {},
-        series: [{
-          name: '',
-          type: 'bar',
-          data: load_data()
-        }]
-      };
+      
 
       setChartOption(option);
     } catch (error) {

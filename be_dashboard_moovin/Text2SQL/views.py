@@ -14,79 +14,95 @@ def text_to_sql(request):
         text = data.get('text', '')
 
         # Prompt detallado para el modelo de OpenAI
-        prompt = f"""
-        # Rol  
-        Sos un experto en generación de consultas **SQL** a partir de descripciones en lenguaje natural.  
-        Tu conocimiento incluye la creación de consultas complejas utilizando **MySQL** y la comprensión profunda de estructuras de bases de datos relacionales.  
-
-        # Tarea  
-        Tu tarea consiste en:  
-        - Analizar el texto recibido para identificar la información solicitada.  
-        - Generar una consulta **SQL** precisa y optimizada en base a la estructura y relaciones de las tablas proporcionadas.  
-        - Asegurarte de que la consulta sea compatible con **MySQL**.  
-        - No incluyas comentarios ni explicaciones, solo la consulta **SQL** limpia.  
-
-        # Detalles Específicos  
-        - **Tablas y Columnas Disponibles:**  
-          - **Clientes:**  
-            - `id_cliente` (INT, PRIMARY KEY, AUTO_INCREMENT)  
-            - `nombre` (VARCHAR(50), NOT NULL)  
-            - `primer_apellido` (VARCHAR(50), NOT NULL)  
-            - `segundo_apellido` (VARCHAR(50), opcional)  
-            - `correo` (VARCHAR(100), NOT NULL, UNIQUE)  
-            - `fecha_ingreso` (DATE, NOT NULL)  
-
-          - **Numeros_de_telefono:**  
-            - `id_numero` (INT, PRIMARY KEY, AUTO_INCREMENT)  
-            - `numero` (VARCHAR(15), NOT NULL, UNIQUE)  
-            - `id_cliente` (INT, NOT NULL, FOREIGN KEY -> Clientes.id_cliente)  
-            - `fecha_ingreso` (DATE, NOT NULL)  
-
-          - **Recargas:**  
-            - `id_recarga` (INT, PRIMARY KEY, AUTO_INCREMENT)  
-            - `Monto` (DECIMAL(10, 2), NOT NULL)  
-            - `Fecha` (DATE, NOT NULL)  
-            - `id_numero` (INT, NOT NULL, FOREIGN KEY -> Numeros_de_telefono.id_numero)  
-
-        - **Relaciones entre Tablas:**  
-          - **Numeros_de_telefono** está relacionada con **Clientes** mediante `id_cliente` con **ON DELETE CASCADE**.  
-          - **Recargas** está relacionada con **Numeros_de_telefono** mediante `id_numero` con **ON DELETE CASCADE**.  
-
-        - **Formato de las Consultas SQL:**  
-          - Usá **SELECT, JOIN, WHERE, GROUP BY, ORDER BY, LIMIT** según corresponda.  
-          - No incluyas comillas simples externas ni el punto y coma (`;`) al final de la consulta.  
-          - Utilizá alias para tablas solo si es necesario para mejorar la claridad.  
-
-        - **Manejo de Errores:**  
-          - Si el texto recibido es ambiguo, generá la consulta **SQL** con las mejores suposiciones posibles según la estructura disponible.  
-          - Si los campos solicitados no existen, creá una consulta que devuelva una estructura válida con los campos existentes.  
-
-        # Contexto  
-        Esta API recibe texto en lenguaje natural y debe responder exclusivamente con la consulta **SQL** sin ningún tipo de explicación adicional.  
-        La base de datos está configurada en **MySQL** y la sintaxis debe ser compatible.  
-        Las consultas serán ejecutadas automáticamente en la base de datos, por lo tanto, deben ser **precisas y seguras**.  
-
-        # Ejemplos  
-        - **Entrada:** "Quiero los correos de los clientes."  
-          **Salida:** `SELECT correo FROM Clientes`  
-
-        - **Entrada:** "Dame los nombres y teléfonos de los clientes creados después de 2023."  
-          **Salida:** `SELECT nombre, numero FROM Clientes INNER JOIN Numeros_de_telefono ON Clientes.id_cliente = Numeros_de_telefono.id_cliente WHERE fecha_ingreso > '2023-01-01'`  
-
-        - **Entrada:** "Quiero saber cuántas recargas hicieron los clientes en enero."  
-          **Salida:** `SELECT nombre, COUNT(*) AS recargas FROM Clientes INNER JOIN Numeros_de_telefono ON Clientes.id_cliente = Numeros_de_telefono.id_cliente INNER JOIN Recargas ON Numeros_de_telefono.id_numero = Recargas.id_numero WHERE MONTH(Fecha) = 1 GROUP BY nombre`  
-
-        - **Entrada:** "¿Cuáles son las últimas 3 recargas de Pedro?"  
-          **Salida:** `SELECT Monto, Fecha FROM Recargas INNER JOIN Numeros_de_telefono ON Recargas.id_numero = Numeros_de_telefono.id_numero INNER JOIN Clientes ON Numeros_de_telefono.id_cliente = Clientes.id_cliente WHERE nombre = 'Pedro' ORDER BY Fecha DESC LIMIT 3`  
-
-        # Notas  
-        - La respuesta debe ser solo el **script SQL** sin ninguna explicación ni comentario.  
-        - La consulta debe ser **eficiente y precisa** según las relaciones y restricciones proporcionadas.  
-        - Usá funciones de agregación (**COUNT, SUM, AVG, etc.**) solo si el texto lo sugiere explícitamente.  
-        - En caso de duda, priorizá la **seguridad y compatibilidad** con **MySQL**.  
-
-        Solicitud: {text}
-        """
+        prompt = (
+            "Sos un experto en generación de consultas SQL y en configuración de gráficos para Apache ECharts a partir de descripciones en lenguaje natural. "
+            "Tu conocimiento incluye la creación de consultas complejas utilizando MySQL y la generación dinámica de objetos `option` para ECharts, adaptados según los atributos y el tipo de gráfico solicitado. "
+            "Tu tarea consiste en: "
+            "- Analizar el texto recibido para identificar la información solicitada. "
+            "- Generar una consulta SQL precisa y optimizada en base a la estructura y relaciones de las tablas proporcionadas. "
+            "- Crear un objeto `option` para ECharts adaptado al tipo de gráfico solicitado (barras, líneas, pie, etc.) y a los atributos mencionados. "
+            "- No incluyas comentarios ni explicaciones, solo la consulta SQL y el objeto `option` para ECharts. "
+            "Tablas y Columnas Disponibles: "
+            "- Clientes: "
+            "  - `id_cliente` (INT, PRIMARY KEY, AUTO_INCREMENT) "
+            "  - `nombre` (VARCHAR(50), NOT NULL) "
+            "  - `primer_apellido` (VARCHAR(50), NOT NULL) "
+            "  - `segundo_apellido` (VARCHAR(50), opcional) "
+            "  - `correo` (VARCHAR(100), NOT NULL, UNIQUE) "
+            "  - `fecha_ingreso` (DATE, NOT NULL) "
+            "- Numeros_de_telefono: "
+            "  - `id_numero` (INT, PRIMARY KEY, AUTO_INCREMENT) "
+            "  - `numero` (VARCHAR(15), NOT NULL, UNIQUE) "
+            "  - `id_cliente` (INT, NOT NULL, FOREIGN KEY -> Clientes.id_cliente) "
+            "  - `fecha_ingreso` (DATE, NOT NULL) "
+            "- Recargas: "
+            "  - `id_recarga` (INT, PRIMARY KEY, AUTO_INCREMENT) "
+            "  - `Monto` (DECIMAL(10, 2), NOT NULL) "
+            "  - `Fecha` (DATE, NOT NULL) "
+            "  - `id_numero` (INT, NOT NULL, FOREIGN KEY -> Numeros_de_telefono.id_numero) "
+            "Relaciones entre Tablas: "
+            "- Numeros_de_telefono está relacionada con Clientes mediante `id_cliente` con ON DELETE CASCADE. "
+            "- Recargas está relacionada con Numeros_de_telefono mediante `id_numero` con ON DELETE CASCADE. "
+            "Formato de las Respuestas: "
+            "- La respuesta debe incluir dos partes: "
+            "  1. Consulta SQL: La consulta optimizada según la estructura de la base de datos. "
+            "  2. Objeto `option` para ECharts: Configurado según los atributos y el tipo de gráfico solicitado. "
+            "- El objeto `option` debe: "
+            "  - Configurar `xAxis` y `yAxis` según los atributos mencionados. "
+            "  - Definir `series` dinámicamente, dejando los datos en blanco para ser llenados luego. "
+            "  - Adaptarse automáticamente al tipo de gráfico solicitado (barras, líneas, pie, etc.). "
+            "  - Utilizar los nombres de los atributos como referencias para los ejes y las series. "
+            "Ejemplo de Salida Esperada: "
+            "- Entrada: 'Necesito un gráfico de barras con la cantidad de clientes que se unieron por mes en 2023.' "
+            "- Salida: "
+            "  SELECT MONTH(fecha_ingreso) AS mes, COUNT(*) AS cantidad_clientes "
+            "  FROM Clientes "
+            "  WHERE YEAR(fecha_ingreso) = 2023 "
+            "  GROUP BY mes "
+            "  const option = { "
+            "    xAxis: { "
+            "      type: 'category', "
+            "      data: [] // Se llenará dinámicamente con los meses: ['Enero', 'Febrero', 'Marzo', ...] "
+            "    }, "
+            "    yAxis: { "
+            "      type: 'value' "
+            "    }, "
+            "    series: [ "
+            "      { "
+            "        name: 'Clientes', "
+            "        type: 'bar', "
+            "        data: [] // Se llenará dinámicamente con las cantidades de clientes "
+            "      } "
+            "    ] "
+            "  }; "
+            "- Entrada: 'Quiero un gráfico de líneas mostrando los montos de recargas por fecha.' "
+            "- Salida: "
+            "  SELECT Fecha, SUM(Monto) AS total_monto "
+            "  FROM Recargas "
+            "  GROUP BY Fecha "
+            "  const option = { "
+            "    xAxis: { "
+            "      type: 'category', "
+            "      data: [] // Se llenará dinámicamente con las fechas "
+            "    }, "
+            "    yAxis: { "
+            "      type: 'value' "
+            "    }, "
+            "    series: [ "
+            "      { "
+            "        name: 'Total Monto', "
+            "        type: 'line', "
+            "        data: [] // Se llenará dinámicamente con los montos "
+            "      } "
+            "    ] "
+            "  }; "
+            "Notas: "
+            "- La respuesta debe ser exclusivamente el SQL y el objeto `option` para ECharts sin explicaciones. "
+            "- No incluyas comillas simples externas ni el punto y coma (`;`) al final de la consulta. "
+            "- Usá alias para tablas solo si es necesario para mejorar la claridad. "
+            "- En caso de ambigüedad, generá las mejores suposiciones posibles basándote en la estructura disponible. "
+            f"Solicitud: {text}"
+        )
 
         # Solicitud al modelo de OpenAI para convertir texto natural a SQL
         response = openai.ChatCompletion.create(
@@ -97,8 +113,8 @@ def text_to_sql(request):
             ],
             max_tokens=150
         )
-        print(response)
         sql_query = response['choices'][0]['message']['content']
+        print(response)
 
         # Ejecutar la consulta SQL en la base de datos
         with connection.cursor() as cursor:
