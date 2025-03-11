@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',     
+    'corsheaders',
+    'rest_framework',
+    'Superset_dashboards',  
     'Text2SQL',  
 ]
 
@@ -76,6 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'be_dashboard_moovin.wsgi.application'
+
 
 
 # Database
