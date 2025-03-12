@@ -1,29 +1,30 @@
 from pathlib import Path
-
-from dotenv import load_dotenv
+import environ
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Inicializar django-environ
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Cargar variables de entorno desde el archivo .env
-load_dotenv()
-
-DB_NAME = os.getenv('Db_NAME')
-DB_HOST = os.getenv('Db_HOST')
-DB_USER = os.getenv('Db_USER')
-DB_PASSWORD = os.getenv('Db_PASSWORD')
-DB_PORT = os.getenv('Db_PORT')
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-AI_API = os.getenv('AI_API')
-
+DB_NAME = env('Db_NAME')
+DB_HOST = env('Db_HOST')
+DB_USER = env('Db_USER')
+DB_PASSWORD = env('Db_PASSWORD')
+DB_PORT = env('Db_PORT')
+SECRET_KEY = env('DJANGO_SECRET_KEY')
+AI_API = env('AI_API')
+SUPERSET_URL = env('SUPERSET_URL')
+SUPERSET_USER = env('SUPERSET_USER')
+SUPERSET_PASSWORD = env('SUPERSET_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -51,9 +52,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3001",  
+    "http://localhost:3003",  
 ]
 
 # Todos los Origenes 
@@ -79,8 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'be_dashboard_moovin.wsgi.application'
 
-
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -97,7 +95,6 @@ DATABASES = {
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -117,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -128,7 +124,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
