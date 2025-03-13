@@ -1,38 +1,48 @@
-import * as React from "react";
-import TextField from "@mui/material/TextField";
-import Button from '@mui/material/Button';
-import { useState } from "react";
-import { fetch_specific_data } from "@/services/text2sql";
-import EChartComponent from "../components/Firts_Chart";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchChartData } from '../slices/chartSlice';
+import * as echarts from 'echarts';
 
-const Dashboard_page = () => {
-  const [graphic_requested, setGraphic_requested] = useState("Haz una lista con todos los clientes que ingresaron en el 2023, ordena la grafica por mes");
-  const [chartOption, setChartOption] = useState(null);
+const Data_dashboard = () => {
+  const dispatch = useDispatch();
+  const chartData = useSelector((state) => state.chart.data);
+  const chartStatus = useSelector((state) => state.chart.status);
 
-  const send_request = async () => {
-    try {
-      const response = await fetch_specific_data(graphic_requested);
-      console.log("Data", response);
+  useEffect(() => {
+    dispatch(fetchChartData(25));  
+  }, [dispatch]);
 
-
-    } catch (error) {
-      console.error('Error fetching SQL query:', error);
+  useEffect(() => {
+    if (chartData) {
+      const chart = echarts.init(document.getElementById("pieChart"));
+      const options = {
+        title: { text: "Distribución de Provincias (Age > 20)", left: "center", style: { color: "#FFFFFF" } },
+        tooltip: { trigger: "item" },
+        legend: { orient: "vertical", left: "left" },
+        series: [
+          {
+            name: "Personas",
+            type: "pie",
+            radius: "50%",
+            data: chartData,
+            emphasis: {
+              itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: "rgba(0, 0, 0, 0.5)" },
+            },
+          },
+        ],
+      };
+      chart.setOption(options);
     }
-  }
+  }, [chartData]);
 
   return (
-    <div className="dashboard-body">
-      <div className="graphic-container">
-        <div className="graphic">
-          {chartOption && <EChartComponent option={chartOption} />}
-        </div>
-        <div className="graphic-input">
-          <TextField id="graphic-input"  variant="outlined" placeholder="Grafica a construir " />
-          <Button variant="contained" onClick={send_request}>Solicitar</Button>
-        </div>
-      </div>
+    <div>
+      <h1>Dashboard de Datos</h1>
+      <div id="pieChart" style={{ width: "600px", height: "400px" }}></div>
+      {chartStatus === 'loading' && <p>Cargando datos...</p>}
+      {chartStatus === 'failed' && <p>Error al cargar los datos.</p>}
     </div>
   );
 };
 
-export default Dashboard_page;
+export default Data_dashboard;
