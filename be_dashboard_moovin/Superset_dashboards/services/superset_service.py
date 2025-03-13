@@ -1,7 +1,7 @@
 import requests
 from django.conf import settings
 
-# Función para obtener el token de Superset
+#Generar el token de superset
 def get_superset_token():
     auth_url = f"{settings.SUPERSET_URL}/api/v1/security/login"
     auth_payload = {
@@ -12,9 +12,28 @@ def get_superset_token():
     response = requests.post(auth_url, json=auth_payload)
     
     if response.status_code == 200:
-        return response.json()["access_token"]
-    
-    raise Exception("Error obteniendo token de Superset")
+        return response.json().get("access_token") 
+
+    raise Exception(f"Error obteniendo token de Superset: {response.text}")
+
+def make_superset_request(endpoint, data=None, method="GET"):
+    token = get_superset_token()  
+
+    headers = {
+        "Authorization": f"Bearer {token}",
+    }
+
+    if method == "POST":
+        response = requests.post(endpoint, headers=headers, json=data)
+    else:
+        response = requests.get(endpoint, headers=headers, params=data)
+
+    if response.status_code == 200:
+        return response.json()  
+    else:
+        raise Exception(f"Error al hacer la solicitud a Superset: {response.status_code} - {response.text}")
+
+
 
 # Función para obtener datos de un dataset en Superset
 def get_superset_chart_data(dataset_id, metric, date_range):
@@ -39,9 +58,7 @@ def get_superset_chart_data(dataset_id, metric, date_range):
     raise Exception(f"Error obteniendo datos de Superset: {response.text}")
 
 
-def get_superset_pie_chart(dataset_id):
-    """Obtiene datos de Superset para un gráfico de tarta filtrado por edad > 20"""
-    
+def get_province_distribution_chart(dataset_id):    
     token = get_superset_token()
     headers = {"Authorization": f"Bearer {token}"}
     url = f"{settings.SUPERSET_URL}/api/v1/chart/data"
@@ -49,9 +66,9 @@ def get_superset_pie_chart(dataset_id):
     payload = {
         "datasource": {"id": dataset_id, "type": "table"},
         "queries": [{
-            "groupby": ["provincia"],  # Agrupamos por provincia
-            "metrics": ["count"],  # Contamos registros
-            "filters": [{"col": "age", "op": ">", "val": 20}],  # Filtramos age > 20
+            "groupby": ["provincia"], 
+            "metrics": ["count"], 
+            "filters": [{"col": "age", "op": ">", "val": 20}], 
         }]
     }
 
