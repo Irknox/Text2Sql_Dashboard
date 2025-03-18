@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'Superset_dashboards',  
-    'Text2SQL',  
+    'Text2SQL',
+    'Campaing_dashboard',
 ]
 
 MIDDLEWARE = [
@@ -52,9 +53,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3003", "http://localhost:3000" , 
-]
+# Configuración de CORS
+CORS_ALLOW_CREDENTIALS = True  # Permitir credenciales (cookies y autenticación)
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]  # Permitir solo localhost:3000
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]  # Confianza en localhost:3000
+
+# Configuración de CSRF
+CSRF_COOKIE_SECURE = False  # Solo en desarrollo, en producción debe ser True
+CSRF_COOKIE_HTTPONLY = False  # Permitir acceso desde JavaScript
+CSRF_COOKIE_SAMESITE = "Lax"  # O puedes probar con "None" si sigues teniendo problemas
+SESSION_COOKIE_SAMESITE = "Lax"
 
 # Todos los Origenes 
 # CORS_ALLOW_ALL_ORIGINS = True
