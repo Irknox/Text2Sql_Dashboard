@@ -35,7 +35,7 @@ export default function Dashboard() {
     if (chartData) {
       const chart = echarts.init(document.getElementById("pieChart"));
       const options = {
-        title: { text: "Distribución de Provincias (Age > 20)", left: "center", style: { color: "#FFFFFF" } },
+        title: { text: "Distribución de Provincias Holaaaaaaaa (Age > 20)", left: "center", style: { color: "#FFFFFF" } },
         tooltip: { trigger: "item" },
         legend: { orient: "vertical", left: "left" },
         series: [
