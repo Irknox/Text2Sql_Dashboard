@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .services.PDV_services import get_balance_available,get_current_sales,get_sales_same_date_last_month,format_sales_for_chart,get_sales_by_day
+from .services.PDV_services import get_balance_available,get_current_sales,get_sales_same_date_last_month,format_sales_for_chart,get_sales_by_week
 
 def balance_available_view(request):
     if request.method == 'GET':
@@ -46,7 +46,7 @@ def sales_variaton_porcentage(request):
 def sales_per_day(request):
     if request.method=="GET":
         try:
-            sales_by_day=get_sales_by_day(112)
+            sales_by_day=get_sales_by_week(112)
             data_formatted = format_sales_for_chart(sales_by_day)
             return JsonResponse(data_formatted, safe=False)
         except Exception as e:
