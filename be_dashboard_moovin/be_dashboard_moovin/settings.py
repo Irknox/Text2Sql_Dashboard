@@ -20,6 +20,7 @@ AI_API = env('AI_API')
 SUPERSET_URL = env('SUPERSET_URL')
 SUPERSET_USER = env('SUPERSET_USER')
 SUPERSET_PASSWORD = env('SUPERSET_PASSWORD')
+DB_PDV_DATA=env('DB_PDV_DATA')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

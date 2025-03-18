@@ -119,11 +119,11 @@ def get_sales_by_week(id_Cliente):
         """
         
         cursor.execute(query, (id_Cliente,))
-        result = cursor.fetchall()  # Obtiene todos los resultados de la consulta
+        result = cursor.fetchall() # Obtiene todos los resultados
         cursor.close()
         connection.close()
     
-        return result  # Devuelve los resultados obtenidos de la consulta
+        return result
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
@@ -177,3 +177,74 @@ def format_sales_for_chart(sales_data):
     }
     
     return result
+
+def get_sales_data(id_Cliente):
+    try:
+        id_Cliente = str(id_Cliente)
+
+        connection = mysql.connector.connect(
+            host=settings.DB_HOST,
+            user=settings.DB_USER,
+            password=settings.DB_PASSWORD,
+            database=settings.DB_NAME
+        )
+        
+        cursor = connection.cursor(dictionary=True)
+        
+        query = """
+            SELECT 
+                CASE mes_venta
+                    WHEN 1 THEN 'Enero'
+                    WHEN 2 THEN 'Febrero'
+                    WHEN 3 THEN 'Marzo'
+                    WHEN 4 THEN 'Abril'
+                    WHEN 5 THEN 'Mayo'
+                    WHEN 6 THEN 'Junio'
+                    WHEN 7 THEN 'Julio'
+                    WHEN 8 THEN 'Agosto'
+                    WHEN 9 THEN 'Septiembre'
+                    WHEN 10 THEN 'Octubre'
+                    WHEN 11 THEN 'Noviembre'
+                    WHEN 12 THEN 'Diciembre'
+                END AS mes,
+                total_ventas AS monto,
+                numero_ventas
+            FROM resumen_ventas
+            WHERE id_cliente = %s
+            AND anio_venta = 2023
+            AND mes_venta BETWEEN 7 AND 12  -- Solo últimos 6 meses (Julio - Diciembre)
+            ORDER BY mes_venta ASC;
+        """
+        
+        cursor.execute(query, (id_Cliente,))
+        result = cursor.fetchall()  # Obtiene todos los resultados
+        cursor.close()
+        connection.close()
+    
+        return result  # Devuelve los datos formateados con los nombres de los meses
+
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        raise
+    
+    
+
+def last_six_months_sales_chart_formatter(data):
+    legend_data = [record["mes"] for record in data]
+    amount_data = [{"value": record["monto"], "name": record["mes"]} for record in data]
+    
+    sales_amount = [
+        {
+            "value": record["numero_ventas"],
+            "name": record["mes"],
+            "selected": True if record["mes"] == "Septiembre" else False
+        }
+        for record in data
+    ]
+
+    # Retornar la respuesta formateada
+    return {
+        "legend_data": legend_data,
+        "amount_data": amount_data,
+        "sales_amount": sales_amount
+    }
