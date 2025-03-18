@@ -94,7 +94,7 @@ def get_sales_same_date_last_month(id_Cliente):
         raise
     # Usar para obtener la del último mes actual: SELECT SUM(monto) AS total_monto FROM botacora_cliente_final WHERE id_Cliente = %s AND MONTH(fecha) = MONTH(CURDATE()) AND YEAR(fecha) = YEAR(CURDATE());
 
-def get_sales_by_day(id_Cliente):
+def get_sales_by_week(id_Cliente):
     try:
         id_Cliente = str(id_Cliente)
 
@@ -109,13 +109,13 @@ def get_sales_by_day(id_Cliente):
         query = """
             SELECT 
                 SUM(monto) AS total_monto,
-                DATE(fecha) AS fecha,  -- Convierte la fecha a solo día (sin hora)
-                anio_venta AS año      -- Utiliza la columna anio_venta para el año
+                WEEK(fecha, 3) AS semana,  -- Obtiene el número de la semana (modo ISO)
+                anio_venta AS año          -- Año de la venta
             FROM botacora_cliente_final
             WHERE id_Cliente = %s
             AND anio_venta IN (2022, 2023)  -- Filtra por los años 2022 y 2023
-            GROUP BY anio_venta, DATE(fecha)  -- Agrupa por año y fecha
-            ORDER BY anio_venta ASC, DATE(fecha) ASC;  -- Ordena por año primero, luego por fecha dentro de cada año
+            GROUP BY anio_venta, WEEK(fecha, 3)  -- Agrupa por año y semana
+            ORDER BY anio_venta ASC, semana ASC;  -- Ordena por año primero, luego por semana dentro de cada año
         """
         
         cursor.execute(query, (id_Cliente,))
@@ -123,48 +123,39 @@ def get_sales_by_day(id_Cliente):
         cursor.close()
         connection.close()
     
-
         return result  # Devuelve los resultados obtenidos de la consulta
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         raise
-
+    
+    
 def format_sales_for_chart(sales_data):
     legend_data = []
-    x_axis_data = []
+    x_axis_data = [f"Semana {i}" for i in range(1, 53)]  # Crear las 52 semanas del año
     series_data = []
     
-    # Generar los 365 días del año de forma fija, sin duplicados
-    days_of_year = []
-    for i in range(365):
-        day = (datetime(2022, 1, 1) + timedelta(days=i)).strftime("%d %b")  # '01 Jan', '02 Jan', ...
-        days_of_year.append(day)
-
-    # Agrupar los datos de ventas por año y fecha
+    # Agrupar los datos de ventas por año y semana
     years_data = {}
 
     for record in sales_data:
         year = record['año']
-        fecha = record['fecha']
+        semana = record['semana']
         monto = record['total_monto']
         
         if year not in years_data:
             years_data[year] = {}
-        
-        # Usar la fecha como clave para agrupar por día (formato 'dd bbb')
-        years_data[year][fecha.strftime('%d %b')] = monto
+
+        years_data[year][semana] = monto  # Guardar el monto en la semana correspondiente
     
     # Crear la lista de ventas por año
     for year in sorted(years_data.keys()):
         year_sales = []
         
-        # Asignar el monto de ventas para cada día del año
-        for day in days_of_year:
-            # Verificar si hay ventas para el día en el año
-            day_date = datetime.strptime(day, '%d %b')  # Convertir '01 Jan' -> datetime para comparar con 'fecha'
-            day_sales = years_data[year].get(day_date.strftime('%d %b'), 0)
-            year_sales.append(day_sales)
+        # Asignar el monto de ventas para cada semana del año
+        for semana in range(1, 53):  # 52 semanas en total
+            week_sales = years_data[year].get(semana, 0)  # Obtener ventas o 0 si no hay datos
+            year_sales.append(week_sales)
         
         series_data.append({
             'name': f'Ventas {year}',
@@ -180,7 +171,7 @@ def format_sales_for_chart(sales_data):
             'data': legend_data
         },
         'xAxis': {
-            'data': days_of_year  # Usar los días fijos, sin el año
+            'data': x_axis_data  # Lista de semanas
         },
         'series': series_data
     }
