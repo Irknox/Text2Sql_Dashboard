@@ -56,8 +56,8 @@ MIDDLEWARE = [
 
 # Configuración de CORS
 CORS_ALLOW_CREDENTIALS = True  # Permitir credenciales (cookies y autenticación)
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]  # Permitir solo localhost:3000
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]  # Confianza en localhost:3000
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000","http://localhost:3001"]  # Permitir solo localhost:3000
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000","http://localhost:3001"]  # Confianza en localhost:3000
 
 # Configuración de CSRF
 CSRF_COOKIE_SECURE = False  # Solo en desarrollo, en producción debe ser True
