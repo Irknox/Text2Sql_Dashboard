@@ -6,7 +6,6 @@ export const fetch_variation_data = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const variation_data = await getSalesVariationData();
-      console.log("variation_data", variation_data);
       return variation_data; 
     } catch (error) {
       return rejectWithValue(error.message);
