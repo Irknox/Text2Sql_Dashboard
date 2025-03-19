@@ -8,7 +8,6 @@ import PDV_cards_data_component from "@/components/PDV_cards_data_component";
 export default function Dashboard() {
 
   return (
-
     <div className="dashboard_body">
       <div className="pdv_data_cards">
         <PDV_cards_data_component />
