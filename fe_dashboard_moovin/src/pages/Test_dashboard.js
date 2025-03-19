@@ -5,7 +5,6 @@ import Last_six_months_sales_chart from "@/components/Last_six_months_sales_char
 import Sales_week from "@/components/sales_week";
 import PDV_cards_data_component from "@/components/PDV_cards_data_component";
 
-
 export default function Dashboard() {
 
   return (
