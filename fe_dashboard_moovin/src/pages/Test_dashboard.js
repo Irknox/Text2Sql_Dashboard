@@ -12,9 +12,8 @@ export default function Dashboard() {
       <div className="pdv_data_cards">
         <PDV_cards_data_component />
       </div>
-      <div id="pieChart" className="pdv_sales_chart" style={{ width: "600px", height: "400px" }}>
-        <Last_six_months_sales_chart />
-
+      <div className="pdv_sales_chart">
+      <Sales_week />
       </div>
     </div>
   );

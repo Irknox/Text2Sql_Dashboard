@@ -29,7 +29,6 @@ export const getSalesVariationData = async () => {
     try {
         const response = await axios.get('http://127.0.0.1:8000/sales_variation/');
         if (response) {
-            console.log("variation_data", response.data);
             return response.data;
         }
         console.error('Error al obtener la variación de ventas');

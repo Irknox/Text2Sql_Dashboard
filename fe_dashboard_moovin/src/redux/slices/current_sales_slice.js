@@ -6,7 +6,6 @@ export const fetch_current_sales = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const current_sales = await getCurrentSalesData();
-      console.log("current_sales", current_sales);
       return current_sales; 
     } catch (error) {
       return rejectWithValue(error.message);
