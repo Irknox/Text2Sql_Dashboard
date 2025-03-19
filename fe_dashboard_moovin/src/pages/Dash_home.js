@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Box, Typography, Divider, Paper, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import Last_six_months_sales_chart from '../components/Last_six_months_sales_chart';
 import Sales_week from '@/components/sales_week';
+=======
+import { Box, Typography, Divider, Paper, Drawer, List, ListItem, ListItemText, IconButton } from '@mui/material';
+import Cards_Data from '../components/Cards_Data';
+>>>>>>> e2ef17ad03d4c172ceaef0c96942322cf3ebd3bc
 
 const Dash_Home = () => {
   return (

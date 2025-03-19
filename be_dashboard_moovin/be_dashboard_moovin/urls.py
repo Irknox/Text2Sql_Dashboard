@@ -14,6 +14,6 @@ urlpatterns = [
     path('balance_available/', pdv_views.balance_available_view, name='balance_available'),
     path('current_sales/', pdv_views.sales_current_month, name='sales_current_month'),
     path('sales_variation/', pdv_views.sales_variaton_porcentage, name='sales_variation'),
-    path('sales_per_day/', pdv_views.sales_per_day, name='sales_per_day'),
+    path('sales_per_week/', pdv_views.sales_per_week, name='sales_per_day'),
     path('sales_data/', pdv_views.sales_last_six_months, name='sales_data'),
 ]
