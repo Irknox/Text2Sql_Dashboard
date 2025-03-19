@@ -5,8 +5,8 @@ from .services.PDV_services import get_balance_available,get_current_sales,get_s
 def balance_available_view(request):
     if request.method == 'GET':
         try:
-            data = get_balance_available(112)
-            return JsonResponse(data, safe=False)
+            response = get_balance_available(112)
+            return JsonResponse(response[0], safe=False)
         except Exception as e:
             print(f"Error: {e}")
             return JsonResponse({"error": str(e)}, status=500)
@@ -43,11 +43,11 @@ def sales_variaton_porcentage(request):
     else:
         return JsonResponse({"error": "Método no permitido"}, status=405)
     
-def sales_per_day(request):
+def sales_per_week(request):
     if request.method=="GET":
         try:
-            sales_by_day=get_sales_by_week(112)
-            data_formatted = format_sales_for_chart(sales_by_day)
+            sales_by_week=get_sales_by_week(112)
+            data_formatted = format_sales_for_chart(sales_by_week)
             return JsonResponse(data_formatted, safe=False)
         except Exception as e:
             print(f"Error: {e}")
