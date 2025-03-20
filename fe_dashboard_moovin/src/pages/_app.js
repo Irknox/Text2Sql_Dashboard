@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import { store } from '../redux/store/index';
-import '../styles/Dashboard.css';
+import '../styles/Dash_styles.css';
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -72,8 +72,8 @@ const Sales_week = () => {
 
   return (
     <div className="sales_chart_container">
-      <h1>Ventas Semanales</h1>
-      <div id="salesWeekChart" style={{ width: "600px", height: "400px" }}></div>
+      <h1></h1>
+      <div id="salesWeekChart" style={{ width: "1200px", height: "800px" }}></div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
     </div>

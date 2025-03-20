@@ -1,49 +1,36 @@
-import React, { useState } from 'react';
-import Last_six_months_sales_chart from '../components/Last_six_months_sales_chart';
-import Sales_week from '@/components/sales_week';
-import { Box, Typography, Divider, Paper, Drawer, List, ListItem, ListItemText, IconButton } from '@mui/material';
-import Cards_Data from '../components/Cards_Data';
+import React from 'react';
+import PDV_cards_data_component from '@/components/PDV_cards_data_component';
+import LastSixMonthsSalesChart from '@/components/Last_six_months_sales_chart';
+import Sales_week from '@/components/Sales_week';
 
-const Dash_Home = () => {
-  return (
-    <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#F0F4F8' }}>
-      {/* Sidebar */}
-      <Drawer variant="permanent" sx={{ width: 250, flexShrink: 0, '& .MuiDrawer-paper': { width: 250, boxSizing: 'border-box', backgroundColor: '#2E7D32', color: 'white' } }}>
-        <Typography variant="h6" sx={{ p: 2, textAlign: 'center', fontWeight: 'bold' }}>Distribuidora Patitos</Typography>
-        <Divider sx={{ backgroundColor: 'white' }} />
-        <List>
-          {['Dashboard', 'Clientes', 'Productos', 'Ventas', 'Despachos'].map((text) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} sx={{ textAlign: 'center' }} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      
-      {/* Contenido principal */}
-      <Box sx={{ flexGrow: 1, p: 4, ml: '250px' }}>
-        <Paper elevation={3} sx={{ p: 3, mb: 4, backgroundColor: '#E8F5E9' }}>
-          <Typography variant="h3" gutterBottom sx={{ color: '#2E7D32', fontWeight: 'bold' }}></Typography>
-          <Typography variant="subtitle1" color="text.secondary">
-            Análisis general de las métricas
-          </Typography>
-        </Paper>
+const Navbar = () => (
+    <div className="navbar">
+        <h1>kölbi Control Punto de Venta ⭐</h1>
+    </div>
+);
 
-        <Box sx={{ display: 'grid', gap: 3, gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))' }}>
-          <Paper elevation={3} sx={{ p: 3, backgroundColor: '#FAFAFA' }}>
-            <Typography variant="h5" sx={{ color: '#2E7D32', fontWeight: 'bold' }}>Resumen de Ventas</Typography>
-            <Divider sx={{ my: 1 }} />
-            <Sales_week />
-          </Paper>
-          <Paper elevation={3} sx={{ p: 3, backgroundColor: '#FAFAFA' }}>
-            <Typography variant="h5" sx={{ color: '#2E7D32', fontWeight: 'bold' }}>Ventas Últimos 6 Meses</Typography>
-            <Divider sx={{ my: 1 }} />
-            <Last_six_months_sales_chart /> 
-          </Paper>
-        </Box>
-      </Box>
-    </Box>
-  );
+const Dash_home = () => {
+    return (
+        <div className="dashboard-container">
+            <Navbar />
+            <div className="dashboard-tabs">
+                <span className="tab active">Ventas en Tiempo Real</span>
+                <span className="tab">Puntos de Venta</span>
+                <span className="tab">Actividad de Clientes</span>
+            </div>
+            <div className="grid-container">
+                <div className="grid-item">
+                    <PDV_cards_data_component />
+                </div>
+                <div className="grid-item">
+                    <LastSixMonthsSalesChart  />
+                </div>
+                <div className="grid-item">
+                    <Sales_week  />
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default Dash_Home;
+export default Dash_home;
