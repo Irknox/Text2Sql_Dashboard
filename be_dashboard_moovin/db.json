@@ -48,5 +48,23 @@
         "producto": "SIMs Vendidas",
         "monto": 874
     }
+  ],
+  "ventas_por_provincia":[
+    { "provincia": "San José", "monto": 1270300 },
+    { "provincia": "Alajuela", "monto": 826900 },
+    { "provincia": "Cartago", "monto": 430500 },
+    { "provincia": "Heredia", "monto": 407600 },
+    { "provincia": "Guanacaste", "monto": 271500 },
+    { "provincia": "Puntarenas", "monto": 315000 },
+    { "provincia": "Limón", "monto": 296000 }
+  ],
+  "ventas_sims_provincia":[
+    { "provincia": "San José", "vendidas": 317, "activadas": 189 },
+    { "provincia": "Alajuela", "vendidas": 215, "activadas": 137 },
+    { "provincia": "Cartago", "vendidas": 162, "activadas": 98 },
+    { "provincia": "Heredia", "vendidas": 178, "activadas": 87 },
+    { "provincia": "Guanacaste", "vendidas": 112, "activadas": 62 },
+    { "provincia": "Puntarenas", "vendidas": 129, "activadas": 43 },
+    { "provincia": "Limón", "vendidas": 117, "activadas": 37 }
   ]
 }

@@ -18,4 +18,7 @@ urlpatterns = [
     path('sales_per_week/', pdv_views.sales_per_week, name='sales_per_day'),
     path('sales_data/', pdv_views.sales_last_six_months, name='sales_data'),
     path('VTR_card_data/', vtr_views.VTR_cards_data, name='VTR_cards_data'),
+    path('VTR_province_sales/', vtr_views.VTR_province_sales, name='VTR_province_sales'),
+    path('VTR_province_sims_data/', vtr_views.VTR_province_sims_data, name='VTR_province_sims_data'),
+    path('VTR_prevision/', vtr_views.VTR_prevision_recargas, name='VTR_prevision_recargas'),
 ]
