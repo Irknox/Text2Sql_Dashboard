@@ -12,6 +12,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import RemoveIcon from '@mui/icons-material/Remove';
 
+
 const PDV_cards_data_component = () => {
   const dispatch = useDispatch();
   const balance_data = useSelector((state) => state.balance.data);
@@ -56,8 +57,8 @@ const PDV_cards_data_component = () => {
 
   // Tarjetas que se mostrarán
   const cards = [
-    { id: 1, title: "Balance para la venta", monto: "₡" + balance_data },
-    { id: 2, title: "Variación al mes pasado", description: variation_card_description() },
+    { id: 1, title: "Balance en venta", monto: "₡" + balance_data },
+    { id: 2, title: "Variación mes anterior", description: variation_card_description() },
     { id: 3, title: "Monto Vendido", description: "₡" + current_sales_data },
   ];
 
@@ -77,7 +78,7 @@ const PDV_cards_data_component = () => {
                 onClick={() => setSelectedCard(index)}
                 data-active={selectedCard === index ? "" : undefined}
                 sx={{
-                  height: "100%",
+                  height: "90%",
                   "&[data-active]": {
                     backgroundColor: "action.selected",
                     "&:hover": {
@@ -86,7 +87,7 @@ const PDV_cards_data_component = () => {
                   },
                 }}
               >
-                <CardContent className="card_content" sx={{ height: "100%" }}>
+                <CardContent className="card_content" sx={{ height: "90%" }}>
                   <Typography variant="h5" component="div">
                     {card.title}
                   </Typography>

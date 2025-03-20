@@ -1,13 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetch_sales_data } from '@/services/sales_data_services';
+import{fetch_sales_per_week_data} from "../../services/Sales_per_week_services";
 
 // Thunk para obtener los datos del gráfico de ventas
 export const fetchSalesWeekData = createAsyncThunk(
   'Sales_week/fetchSalesWeekData',
   async (_, thunkAPI) => {
     try {
-      const response = await fetch_sales_data();
-      console.log("Datos obtenidos del gráfico de ventas:", response);
+      const response = await fetch_sales_per_week_data();
       return response;
     } catch (error) {
       console.error("Error al obtener los datos del gráfico de ventas:", error);

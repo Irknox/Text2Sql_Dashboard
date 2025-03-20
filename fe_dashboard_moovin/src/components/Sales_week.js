@@ -14,38 +14,56 @@ const Sales_week = () => {
     }
   }, [dispatch, chartStatus]);
 
-  console.log("Datos pages:", chartData);
-
   useEffect(() => {
-    if (chartData) {
+    if (chartData && chartData.series) {
       const salesChart = echarts.init(document.getElementById("salesWeekChart"));
-
-      const days = Object.keys(chartData);
-      const salesValues = Object.values(chartData);
-
+      
       const salesOptions = {
         tooltip: {
-          trigger: "axis"
+          trigger: "axis",
+          axisPointer: {
+            type: "shadow"
+          }
+        },
+        toolbox: {
+          feature: {
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ["line", "bar"] },
+            restore: { show: true },
+            saveAsImage: { show: true }
+          }
         },
         legend: {
-          data: ["Ventas Semanales"],
-          top: "5%",
-          left: "center",
+          data: chartData.legend.data
         },
-        xAxis: {
-          type: "category",
-          data: [1,3],
-        },
-        yAxis: {
-          type: "value",
-        },
-        series: [
+        xAxis: [
           {
-            name: "Ventas Semanales",
-            type: "bar",
-            data: [1,3],
-          },
+            type: "category",
+            data: chartData.xAxis.data,
+            axisPointer: {
+              type: "shadow"
+            }
+          }
         ],
+        yAxis: [
+          {
+            type: "value",
+            name: "Ventas ultimos 2 años",
+            axisLabel: {
+              formatter: "{value}"
+            }
+          }
+        ],
+        series: chartData.series.map((serie) => ({
+          name: serie.name,
+          type: "bar",
+          data: serie.data,
+          tooltip: {
+            valueFormatter: function (value) {
+              return "₡"+ value;
+            }
+          }
+        }))
       };
 
       salesChart.setOption(salesOptions);
@@ -54,8 +72,8 @@ const Sales_week = () => {
 
   return (
     <div className="sales_chart_container">
-      <h1>Ventas Semanales</h1>
-      <div id="salesWeekChart" style={{ width: "600px", height: "400px" }}></div>
+      <h1></h1>
+      <div id="salesWeekChart" style={{ width: "1200px", height: "800px" }}></div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
     </div>
