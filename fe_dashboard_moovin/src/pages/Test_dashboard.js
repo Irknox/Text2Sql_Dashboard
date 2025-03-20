@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import * as echarts from "echarts";
 import Last_six_months_sales_chart from "@/components/Last_six_months_sales_chart";
-import Sales_week from "@/components/sales_week";
+import Sales_week from "@/components/Sales_week";
 import PDV_cards_data_component from "@/components/PDV_cards_data_component";
 
 export default function Dashboard() {

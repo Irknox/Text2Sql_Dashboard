@@ -1,0 +1,52 @@
+{
+  "recargas_por_producto_dia": [
+    {
+      "id": 1,
+      "producto": "Ventas Totales",
+      "monto": 38183000,
+      "moneda": "CRC"
+    },
+    {
+      "id": 2,
+      "producto": "Tiempo aire",
+      "monto": 32155000,
+      "moneda": "CRC"
+    },
+    {
+      "id": 3,
+      "producto": "Tarjetas físicas colones",
+      "monto": 4021000,
+      "moneda": "CRC"
+    },
+    {
+      "id": 4,
+      "producto": "Tarjetas físicas dólares",
+      "monto": 1260,
+      "moneda": "USD"
+    },
+    {
+      "id": 5,
+      "producto": "Carcelarias colones",
+      "monto": 1006000,
+      "moneda": "CRC"
+    },
+    {
+      "id": 6,
+      "producto": "Carcelarias dólares",
+      "monto": 987000,
+      "moneda": "CRC"
+    }
+  ],
+  "sims_activadas_y_vendidas":[
+    {
+        "id": 1,
+        "producto": "SIMs Activadas",
+        "monto": 525
+    },
+    {
+        "id": 2,
+        "producto": "SIMs Vendidas",
+        "monto": 874
+    }
+  ]
+}
