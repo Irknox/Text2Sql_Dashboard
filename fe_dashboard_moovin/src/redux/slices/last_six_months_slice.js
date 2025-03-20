@@ -7,7 +7,7 @@ export const fetchChartData = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await fetch_sales_data();
-      return response.data; // Devuelve los datos directamente
+      return response; // Devuelve los datos directamente
     } catch (error) {
       console.error("Error al obtener los datos:", error);
       return thunkAPI.rejectWithValue(error.message); // Manejo de errores adecuado
@@ -17,7 +17,7 @@ export const fetchChartData = createAsyncThunk(
 
 // Slice de Redux
 const sales_data_slice = createSlice({
-  name: 'sales_chart_data',
+  name: 'sales_six_months',
   initialState: {
     data: null,
     status: 'idle', 

@@ -5,8 +5,8 @@ import { fetchChartData } from "../redux/slices/last_six_months_slice";
 
 const LastSixMonthsSalesChart = () => {
   const dispatch = useDispatch();
-  const chartData = useSelector((state) => state.sales_chart_data.data);
-  const chartStatus = useSelector((state) => state.sales_chart_data.status);
+  const chartData = useSelector((state) => state.sales_six_months.data);
+  const chartStatus = useSelector((state) => state.sales_six_months.status);
 
   useEffect(() => {
     if (chartStatus === "idle") {
@@ -78,8 +78,8 @@ const LastSixMonthsSalesChart = () => {
 
   return (
     <div className="first_dashboard_container">
-      <div id="salesChart" style={{ width: "600px", height: "400px", marginBottom: "20px" }}></div>
-      <div id="amountChart" style={{ width: "600px", height: "400px" }}></div>
+      <div id="salesChart" style={{ width: "500px", height: "380px" }}></div>
+      <div id="amountChart" style={{ width: "500px", height: "380px" }}></div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
     </div>

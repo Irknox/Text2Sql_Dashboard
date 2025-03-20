@@ -1,9 +1,6 @@
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
-import * as echarts from "echarts";
 import Last_six_months_sales_chart from "@/components/Last_six_months_sales_chart";
-import Sales_week from "@/components/Sales_week";
 import PDV_cards_data_component from "@/components/PDV_cards_data_component";
+import Sales_week from "@/components/Sales_week";
 
 export default function Dashboard() {
 
@@ -13,7 +10,10 @@ export default function Dashboard() {
         <PDV_cards_data_component />
       </div>
       <div className="pdv_sales_chart">
-      <Sales_week />
+        <Last_six_months_sales_chart/>
+      </div>
+      <div className="pdv_sales_week">
+        <Sales_week />
       </div>
     </div>
   );
