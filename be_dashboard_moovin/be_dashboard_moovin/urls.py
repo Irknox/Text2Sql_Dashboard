@@ -20,5 +20,8 @@ urlpatterns = [
     path('VTR_card_data/', vtr_views.VTR_cards_data, name='VTR_cards_data'),
     path('VTR_province_sales/', vtr_views.VTR_province_sales, name='VTR_province_sales'),
     path('VTR_province_sims_data/', vtr_views.VTR_province_sims_data, name='VTR_province_sims_data'),
-    path('VTR_prevision/', vtr_views.VTR_prevision_recargas, name='VTR_prevision_recargas'),
+    path('VTR_prevision_recargas/', vtr_views.VTR_prevision_recargas, name='VTR_prevision_recargas'),
+    path('VTR_prevision_SIMS/', vtr_views.VTR_prevision_SIMS, name='VTR_prevision_SIMS'),
+    path('VTR_sales_by_hour/', vtr_views.VTR_sales_by_hour, name='VTR_sales_by_hour'),
+    path('VTR_sims_by_hour/', vtr_views.VTR_sims_by_hour, name='VTR_sims_by_hour'),
 ]

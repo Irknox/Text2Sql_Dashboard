@@ -62,3 +62,35 @@ def get_sales_last_month():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         raise
+    
+    
+def get_sales_per_hour():
+    try:
+        connection = mysql.connector.connect(
+            host=settings.DB_HOST,
+            user=settings.DB_USER,
+            password=settings.DB_PASSWORD,
+            database=settings.DB_NAME
+        )
+        
+        cursor = connection.cursor(dictionary=True)
+        query = """SELECT 
+            HOUR(fecha) AS hora,
+            SUM(monto) AS total_monto
+            FROM 
+            botacora_cliente_final
+            WHERE 
+            fecha BETWEEN '2024-01-09 08:00:00' AND '2024-01-09 16:00:00'
+            GROUP BY 
+            HOUR(fecha)
+            ORDER BY 
+            hora;
+            """
+        cursor.execute(query)
+        result = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return result
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        raise
