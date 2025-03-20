@@ -4,6 +4,7 @@ from Text2SQL.views import text_to_sql
 from Superset_dashboards import views as superset_views
 from Campaing_dashboard import views as campaing_views
 from PDV_dashboard import views as pdv_views
+from VTR_dashboard import views as vtr_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('sales_variation/', pdv_views.sales_variaton_porcentage, name='sales_variation'),
     path('sales_per_week/', pdv_views.sales_per_week, name='sales_per_day'),
     path('sales_data/', pdv_views.sales_last_six_months, name='sales_data'),
+    path('VTR_card_data/', vtr_views.VTR_cards_data, name='VTR_cards_data'),
 ]
