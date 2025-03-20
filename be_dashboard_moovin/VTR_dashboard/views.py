@@ -1,6 +1,6 @@
 import json
 from django.http import JsonResponse
-from .services.VTR_services import get_category,get_sales_current_month,get_sales_last_month
+from .services.VTR_services import get_category,get_sales_current_month,get_sales_last_month,get_sales_per_hour
 
 def VTR_cards_data(request):
     if request.method == 'GET':
@@ -42,10 +42,6 @@ def VTR_province_sims_data(request):
     else:
         return JsonResponse({"error": "Método no permitido"}, status=405)
 
-from django.http import JsonResponse
-
-from django.http import JsonResponse
-
 def VTR_prevision_recargas(request):
     if request.method == 'GET':
         try:
@@ -78,3 +74,36 @@ def VTR_prevision_recargas(request):
         return JsonResponse({"error": "Método no permitido"}, status=405)
 
 
+
+def VTR_prevision_SIMS(request):
+    if request.method == 'GET':
+        try:
+            response = get_category("prevision_sims")
+            return response
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    else:
+        return JsonResponse({"error": "Método no permitido"}, status=405)
+    
+def VTR_sales_by_hour(request):
+    if request.method == 'GET':
+        try:
+            response = get_sales_per_hour()
+            return JsonResponse(response, safe=False)
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    else:
+        return JsonResponse({"error": "Método no permitido"}, status=405)
+    
+def VTR_sims_by_hour(request):
+    if request.method == 'GET':
+        try:
+            response = get_category("ventas_sims_por_hora")
+            return response
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    else:
+        return JsonResponse({"error": "Método no permitido"}, status=405)
