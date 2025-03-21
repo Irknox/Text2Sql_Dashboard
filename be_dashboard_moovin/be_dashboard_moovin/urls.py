@@ -24,6 +24,7 @@ urlpatterns = [
     path('VTR_prevision_recargas/', vtr_views.VTR_prevision_recargas, name='VTR_prevision_recargas'),
     path('VTR_prevision_SIMS/', vtr_views.VTR_prevision_SIMS, name='VTR_prevision_SIMS'),
     path('VTR_sales_by_hour/', vtr_views.VTR_sales_by_hour, name='VTR_sales_by_hour'),
+    path('VTR_sims_by_hour/', vtr_views.VTR_sims_by_hour, name='VTR_sims_by_hour'),
     path('AC_prepay_active_24h/', ac_views.AC_prepay_active_users_24h, name='AC_prepay_active_24h'),
     path('AC_postpay_active_24h/', ac_views.AC_postpay_active_users_24h, name='AC_postpay_active_users_24h'),
     path('AC_postpay_active_weekly/', ac_views.AC_postpay_active_users_weekly, name='AC_postpay_active_users_weekly'),
