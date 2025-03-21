@@ -76,11 +76,11 @@ def get_sales_per_hour():
         cursor = connection.cursor(dictionary=True)
         query = """SELECT 
             HOUR(fecha) AS hora,
-            SUM(monto) AS total_monto
+            SUM(monto) AS Ventas
             FROM 
             botacora_cliente_final
             WHERE 
-            fecha BETWEEN '2024-01-09 08:00:00' AND '2024-01-09 16:00:00'
+            fecha BETWEEN '2024-01-09 04:00:00' AND '2024-01-10 00:00:00'
             GROUP BY 
             HOUR(fecha)
             ORDER BY 
