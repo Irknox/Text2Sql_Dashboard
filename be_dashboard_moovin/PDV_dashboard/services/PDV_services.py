@@ -24,6 +24,7 @@ def get_balance_available(id_Cliente):
         result = cursor.fetchall()
         cursor.close()
         connection.close()
+        
         return result
     except mysql.connector.Error as err:
         print(f"Error: {err}")

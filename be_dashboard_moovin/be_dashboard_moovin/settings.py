@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'Superset_dashboards',  
     'Text2SQL',
     'Campaing_dashboard',
+    "PDV_dashboard",
+    "VTR_dashboard",
+    "AC_dashboard",
 ]
 
 MIDDLEWARE = [
