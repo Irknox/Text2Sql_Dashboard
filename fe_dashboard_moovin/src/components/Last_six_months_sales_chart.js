@@ -18,8 +18,10 @@ const LastSixMonthsSalesChart = () => {
     if (chartData) {
       const salesChart = echarts.init(document.getElementById("salesChart"));
       const salesOptions = {
-        backgroundColor: "#ffffff",
-        tooltip: { trigger: "axis" },
+        tooltip: {
+          trigger: "axis",
+        },
+
         legend: {
           data: ["Número de Ventas"],
           top: "5%",
@@ -48,6 +50,7 @@ const LastSixMonthsSalesChart = () => {
 
       const amountChart = echarts.init(document.getElementById("amountChart"));
       const amountOptions = {
+
         backgroundColor: "#ffffff",
         tooltip: { trigger: "axis" },
         legend: {
@@ -55,6 +58,10 @@ const LastSixMonthsSalesChart = () => {
           top: "5%",
           left: "center",
           textStyle: { color: "#008b8b" },
+
+        tooltip: {
+          trigger: "axis",
+
         },
         xAxis: {
           type: "category",
@@ -87,34 +94,30 @@ const LastSixMonthsSalesChart = () => {
   return (
     <div
       style={{
-        backgroundColor: "#ffffff",
-        padding: "30px",
-        borderRadius: "12px",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-        margin: "20px auto",
-        maxWidth: "800px",
+        backgroundColor: "white",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        width: "80%",
+        justifySelf: "center",
+        height:"100%"
+
       }}
     >
       <h1
         style={{
-          color: "#008b8b",
+          color: "#004d40",
           textAlign: "center",
           marginBottom: "20px",
-          fontSize: "24px",
+          fontFamily: "system-ui",
+          color: "#302e2e",
+
         }}
       >
         Reporte de Ventas - Últimos 6 Meses
       </h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          alignItems: "center",
-          gap: "20px",
-        }}
-      >
-        <div id="salesChart" style={{ flex: 1, height: "400px"}}></div>
-        <div id="amountChart" style={{ flex: 1, height: "400px" }}></div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width:"100%",height:"90%"}}>
+        <div id="salesChart" style={{ width: "100%", height: "100%",display:"flex",justifySelf:"center" }}></div>
+        <div id="amountChart" style={{ width: "100%", height: "100%" }}></div>
       </div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}

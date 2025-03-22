@@ -50,7 +50,8 @@ const VSH_componente = () => {
       boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
       justifySelf: "right",
       marginTop:"50px",
-      alignContent:"center"
+      alignContent:"center",
+      alignSelf:"center"
     }}
     >
       <ReactECharts option={options} />

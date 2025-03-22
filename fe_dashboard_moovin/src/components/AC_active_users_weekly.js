@@ -11,7 +11,7 @@ const AC_active_users_weekly = () => {
   useEffect(() => {
     AC_Services.get_prepay_active_weekly()
       .then((response) => {
-        setPrepayData(response.prepago_activos_por_semana); 
+        setPrepayData(response.prepago_activos_por_semana);
       })
       .catch((error) => {
         console.log("Error obteniendo datos de prepagos:", error);
@@ -19,7 +19,7 @@ const AC_active_users_weekly = () => {
 
     AC_Services.get_postpay_active_weekly()
       .then((response) => {
-        setPostpayData(response.postpago_activos_por_semana); 
+        setPostpayData(response.postpago_activos_por_semana);
       })
       .catch((error) => {
         console.log("Error obteniendo datos de postpagos:", error);
@@ -102,8 +102,20 @@ const AC_active_users_weekly = () => {
     };
   }, [prepayData, postpayData]);
 
-  return <div id="active_users_chart" style={{ width: "100%", height: "400px" }}></div>;
-
+  return (
+    <div
+      id="active_users_chart"
+      style={{
+        backgroundColor: "#f4f4f4",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        justifySelf: "center",
+        width: "85%",
+        height: "350px",
+        padding:"20px"
+      }}
+    ></div>
+  );
 };
 
 export default AC_active_users_weekly;

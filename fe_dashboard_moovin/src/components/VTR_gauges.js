@@ -8,6 +8,13 @@ const VTR_gauges = () => {
   const [SIMS_prevision, setSIMS_prevision] = useState(null);
   const [Recargas_prevision, setRecargas_prevision] = useState(null);
 
+  const formatNumber = (value) => {
+    if (value >= 1_000_000) {
+      return `${(value / 1_000_000).toFixed(0)} Mill`;
+    }
+    return ((value.toFixed(0)).toLocaleString("en-US"))
+  };
+
   useEffect(() => {
     VTR_Services.get_VTR_SIMS_prevision()
       .then((response) => {
@@ -27,6 +34,7 @@ const VTR_gauges = () => {
       });
   }, []);
 
+  //Inicialización del Gauge
   const GaugeComponent = dynamic(() => import("react-gauge-component"), {
     ssr: false,
   });
@@ -35,6 +43,7 @@ const VTR_gauges = () => {
     return <div>Cargando...</div>;
   }
 
+  //Calculo a final de mesbasado en la cantidadde dias faltantes
   const today = new Date();
   const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
   const daysRemaining = lastDayOfMonth.getDate() - today.getDate();
@@ -59,8 +68,9 @@ const VTR_gauges = () => {
     <div>
       <div
         style={{
-          width: "70%",
+          width: "90%",
           margin: "50px",
+          height: "40%",
           backgroundColor: "#f4f4f4",
           borderRadius: "10px",
           boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
@@ -79,6 +89,11 @@ const VTR_gauges = () => {
           Prevision SIMS fin de mes.
         </h3>
         <GaugeComponent
+          style={{
+            width: "80%",
+            justifySelf: "center",
+            alignContent: "center",
+          }}
           type="semicircle"
           minValue={0}
           value={SIMS_prevision.monto_mes_actual}
@@ -91,20 +106,16 @@ const VTR_gauges = () => {
             subArcs: [
               {
                 limit: SIMS_prevision.monto_mes_pasado,
-                showTick: true,
                 tooltip: { text: "Monto mes pasado" },
               },
               {
                 limit: SIMS_prevision.monto_mes_actual,
-                showTick: true,
-                color: red,
                 tooltip: { text: "Monto actual" },
               },
 
               {
                 limit: SIMS_maxValue,
                 tooltip: { text: "Prevision final" },
-                showTick: true,
               },
             ],
           }}
@@ -125,7 +136,30 @@ const VTR_gauges = () => {
             tickLabels: {
               type: "outer",
               hideMinMax: true,
-              ticks: [{ value: SIMS_prevision.monto_mes_pasado }],
+              ticks: [
+                {
+                  value: SIMS_prevision.monto_mes_pasado,
+                  valueConfig: {
+                    formatTextValue: (value) => formatNumber(value)+ ` Mes pasado`,
+                  },
+                },
+                {
+                  value: SIMS_prevision.monto_mes_actual,
+                  valueConfig: {
+                    formatTextValue:  (value) => formatNumber(value)+ ` Mes pasado`,
+                  },
+                },
+                {
+                  value: SIMS_maxValue,
+                  valueConfig: {
+                    formatTextValue:  (value) => formatNumber(value)+` Prevision`,
+                  },
+                },
+                
+              ],
+              defaultTickLineConfig: {
+                length: 7,
+              },
             },
           }}
         />
@@ -135,7 +169,7 @@ const VTR_gauges = () => {
             display: "flex",
             flexDirection: "row",
             alignContent: "center",
-            justifyContent:"space-evenly"
+            justifyContent: "space-evenly",
           }}
         >
           <p style={{ fontSize: "15px", fontFamily: "system-ui" }}>
@@ -147,18 +181,31 @@ const VTR_gauges = () => {
               display: "flex",
               alignContent: "center",
               fontSize: "15px",
-              fontFamily: "system-ui"
+              fontFamily: "system-ui",
             }}
           >
             Monto mes actual
           </p>
           <RectangleIcon style={{ alignSelf: "center", color: "#2ff465" }} />
+          <p
+            style={{
+              display: "flex",
+              alignContent: "center",
+              fontSize: "15px",
+              fontFamily: "system-ui",
+            }}
+          >
+            Prevision final
+          </p>
+          <RectangleIcon style={{ alignSelf: "center", color: "#747475" }} />
         </div>
       </div>
 
-      <div style={{
-          width: "70%",
+      <div
+        style={{
+          width: "90%",
           margin: "50px",
+          height: "40%",
           backgroundColor: "#f4f4f4",
           borderRadius: "10px",
           boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
@@ -177,6 +224,11 @@ const VTR_gauges = () => {
           Prevision recargas fin de mes.
         </h3>
         <GaugeComponent
+          style={{
+            width: "80%",
+            justifySelf: "center",
+            alignContent: "center",
+          }}
           type="semicircle"
           minValue={0}
           value={Recargas_prevision.monto_mes_actual}
@@ -189,17 +241,14 @@ const VTR_gauges = () => {
             subArcs: [
               {
                 limit: Recargas_prevision.monto_mes_actual,
-                showTick: true,
                 tooltip: { text: "Monto actual" },
               },
               {
                 limit: Recargas_prevision.monto_mes_pasado,
-                showTick: true,
                 tooltip: { text: "Monto mes pasado" },
               },
               {
                 limit: Recargas_maxValue,
-                showTick: true,
                 tooltip: { text: "Proyeccion Final" },
               },
             ],
@@ -215,13 +264,35 @@ const VTR_gauges = () => {
           labels={{
             valueLabel: {
               matchColorWithArc: true,
-              formatTextValue: (value) => `${Recargas_prevision.variacion}%`,
+              formatTextValue: (value) => `${SIMS_prevision.variacion}%`,
               style: { fontSize: "40px", textShadow: "none" },
             },
             tickLabels: {
               type: "outer",
               hideMinMax: true,
-              ticks: [{ value: Recargas_prevision.monto_mes_pasado }],
+              ticks: [
+                {
+                  value: Recargas_prevision.monto_mes_pasado,
+                  valueConfig: {
+                    formatTextValue: (value) => formatNumber(value)+ ` Mes pasado`,
+                  },
+                },
+                {
+                  value: Recargas_prevision.monto_mes_actual,
+                  valueConfig: {
+                    formatTextValue:  (value) => formatNumber(value)+` Mes pasado`,
+                  },
+                },
+                {
+                  value: Recargas_maxValue,
+                  valueConfig: {
+                    formatTextValue:  (value) => formatNumber(value)+` Mes pasado`,
+                  },
+                },
+              ],
+              defaultTickLineConfig: {
+                length: 7,
+              },
             },
           }}
         />
@@ -231,7 +302,7 @@ const VTR_gauges = () => {
             display: "flex",
             flexDirection: "row",
             alignContent: "center",
-            justifyContent:"space-evenly"
+            justifyContent: "space-evenly",
           }}
         >
           <p style={{ fontSize: "15px", fontFamily: "system-ui" }}>
@@ -243,12 +314,23 @@ const VTR_gauges = () => {
               display: "flex",
               alignContent: "center",
               fontSize: "15px",
-              fontFamily: "system-ui"
+              fontFamily: "system-ui",
             }}
           >
             Monto mes actual
           </p>
           <RectangleIcon style={{ alignSelf: "center", color: "#2ff465" }} />
+          <p
+            style={{
+              display: "flex",
+              alignContent: "center",
+              fontSize: "15px",
+              fontFamily: "system-ui",
+            }}
+          >
+            Prevision final
+          </p>
+          <RectangleIcon style={{ alignSelf: "center", color: "#747475" }} />
         </div>
       </div>
     </div>

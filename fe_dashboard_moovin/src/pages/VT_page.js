@@ -30,9 +30,9 @@ export default function VT_page() {
                     gridColumn="1"
                     sx={{
                         display: "flex",
-                        justifySelf:"center", 
+                        justifySelf:"right", 
                         justifyContent:"center",
-                        width: '100%', 
+                        width: '90%', 
                         height:"100%",
                         padding:"5px",
                     }}
@@ -60,11 +60,10 @@ export default function VT_page() {
                 <Box gridColumn="1"
                  sx={{
                     display: "flex",
-                    justifySelf:"center", 
+                    justifySelf:"right", 
                     justifyContent:"center",
-                    width: '100%', 
-                    height:"100%",
-                    padding:"5px",
+                    width: '95%', 
+                    height:"80%",
                 }}
                 >
                     <VSH_componente />
