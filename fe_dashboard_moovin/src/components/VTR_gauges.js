@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
 import VTR_Services from "@/services/VTR_services";
+import { red } from "@mui/material/colors";
 
 const VTR_gauges = () => {
   const [SIMS_prevision, setSIMS_prevision] = useState(null);
@@ -69,7 +70,7 @@ const VTR_gauges = () => {
             emptyColor: "#747475",
             width: 0.35,
             padding: 0.02,
-            colorArray: ["#2ff465", "#747475"],
+            colorArray: ["#16adf1","#2ff465", "#747475"],
             subArcs: [
               {
                 limit: SIMS_prevision.monto_mes_pasado,
@@ -79,6 +80,7 @@ const VTR_gauges = () => {
               {
                 limit: SIMS_prevision.monto_mes_actual,
                 showTick: true,
+                color:red,
                 tooltip: { text: "Monto actual" },
               },
 
@@ -122,7 +124,7 @@ const VTR_gauges = () => {
             emptyColor: "#747475",
             width: 0.35,
             padding: 0.02,
-            colorArray: ["#2ff465", "#747475"],
+            colorArray: ["#2ff465", "#16adf1","#747475"],
             subArcs: [
               {
                 limit: Recargas_prevision.monto_mes_actual,

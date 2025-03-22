@@ -37,28 +37,28 @@
       "moneda": "CRC"
     }
   ],
-  "sims_activadas_y_vendidas":[
+  "sims_activadas_y_vendidas": [
     {
-        "id": 1,
-        "producto": "SIMs Activadas",
-        "monto": 525
+      "id": 1,
+      "producto": "SIMs Activadas",
+      "monto": 525
     },
     {
-        "id": 2,
-        "producto": "SIMs Vendidas",
-        "monto": 874
+      "id": 2,
+      "producto": "SIMs Vendidas",
+      "monto": 874
     }
   ],
-  "ventas_por_provincia":[
+  "ventas_por_provincia": [
     { "provincia": "San José", "monto": 4667354 },
     { "provincia": "Alajuela", "monto": 3033559 },
     { "provincia": "Cartago", "monto": 1590415 },
     { "provincia": "Heredia", "monto": 1399973 },
     { "provincia": "Guanacaste", "monto": 1207331 },
     { "provincia": "Puntarenas", "monto": 1455877 },
-    { "provincia": "Limón", "monto": 1369521  }
+    { "provincia": "Limón", "monto": 1369521 }
   ],
-  "ventas_sims_provincia":[
+  "ventas_sims_provincia": [
     { "provincia": "San José", "vendidas": 317, "activadas": 189 },
     { "provincia": "Alajuela", "vendidas": 215, "activadas": 137 },
     { "provincia": "Cartago", "vendidas": 162, "activadas": 98 },
@@ -67,14 +67,23 @@
     { "provincia": "Puntarenas", "vendidas": 129, "activadas": 43 },
     { "provincia": "Limón", "vendidas": 117, "activadas": 37 }
   ],
-  "prevision_sims":[
+  "prevision_sims": [
     {
-        "monto_mes_pasado": 5562,
-        "monto_mes_actual": 6283,
-        "variacion": 13.00
+      "total_mes_pasado": 24254,
+      "monto_mes_pasado": 5562,
+      "monto_mes_actual": 6283,
+      "variacion": 13.0
     }
   ],
-  "ventas_sims_por_hora":[
+  "prevision_recargas": [
+    {
+      "total_mes_pasado": 463280119,
+      "monto_mes_pasado": 125599727,
+      "monto_mes_actual": 102677308,
+      "variacion": -18.25
+    }
+  ],
+  "ventas_sims_por_hora": [
     {
       "hora": 8,
       "total_sims": 103
@@ -108,394 +117,388 @@
       "total_sims": 56
     }
   ],
-  "activos_prepago":[
-    { "horas": 24, "cantidad_usuarios": 1295000 }
+  "activos_prepago": [{ "horas": 24, "cantidad_usuarios": 1295000 }],
+  "activos_postpago": [{ "horas": 24, "cantidad_usuarios": 1015000 }],
+  "postpago_activos_por_semana": [
+    { "semana": 1, "cantidad": 7139000 },
+    { "semana": 2, "cantidad": 7536000 },
+    { "semana": 3, "cantidad": 7858000 },
+    { "semana": 4, "cantidad": 6551000 },
+    { "semana": 5, "cantidad": 7155000 },
+    { "semana": 6, "cantidad": 6139000 },
+    { "semana": 7, "cantidad": 7625000 },
+    { "semana": 8, "cantidad": 6233000 },
+    { "semana": 9, "cantidad": 7326000 },
+    { "semana": 10, "cantidad": 6099000 },
+    { "semana": 11, "cantidad": 6521000 },
+    { "semana": 12, "cantidad": 6224000 },
+    { "semana": 13, "cantidad": 7632000 },
+    { "semana": 14, "cantidad": 6152000 },
+    { "semana": 15, "cantidad": 6626000 },
+    { "semana": 16, "cantidad": 7042000 },
+    { "semana": 17, "cantidad": 7324000 }
   ],
-"activos_postpago":[ 
-    { "horas": 24, "cantidad_usuarios": 1015000 }
+  "prepago_activos_por_semana": [
+    { "semana": 1, "cantidad": 9865000 },
+    { "semana": 2, "cantidad": 8740000 },
+    { "semana": 3, "cantidad": 9312000 },
+    { "semana": 4, "cantidad": 10055000 },
+    { "semana": 5, "cantidad": 9178000 },
+    { "semana": 6, "cantidad": 10251000 },
+    { "semana": 7, "cantidad": 8874000 },
+    { "semana": 8, "cantidad": 9675000 },
+    { "semana": 9, "cantidad": 9391000 },
+    { "semana": 10, "cantidad": 10062000 },
+    { "semana": 11, "cantidad": 8712000 },
+    { "semana": 12, "cantidad": 9586000 },
+    { "semana": 13, "cantidad": 9237000 },
+    { "semana": 14, "cantidad": 10180000 },
+    { "semana": 15, "cantidad": 8875000 },
+    { "semana": 16, "cantidad": 9743000 },
+    { "semana": 17, "cantidad": 9421000 }
   ],
-"postpago_activos_por_semana": [
-        { "semana": 1, "cantidad": 7139000 },
-        { "semana": 2, "cantidad": 7536000 },
-        { "semana": 3, "cantidad": 7858000 },
-        { "semana": 4, "cantidad": 6551000 },
-        { "semana": 5, "cantidad": 7155000 },
-        { "semana": 6, "cantidad": 6139000 },
-        { "semana": 7, "cantidad": 7625000 },
-        { "semana": 8, "cantidad": 6233000 },
-        { "semana": 9, "cantidad": 7326000 },
-        { "semana": 10, "cantidad": 6099000 },
-        { "semana": 11, "cantidad": 6521000 },
-        { "semana": 12, "cantidad": 6224000 },
-        { "semana": 13, "cantidad": 7632000 },
-        { "semana": 14, "cantidad": 6152000 },
-        { "semana": 15, "cantidad": 6626000 },
-        { "semana": 16, "cantidad": 7042000 },
-        { "semana": 17, "cantidad": 7324000 }
+  "postpago_activos_semanal_provincia": [
+    {
+      "semana": 1,
+      "San_Jose": 2903848,
+      "Alajuela": 1820522,
+      "Cartago": 982450,
+      "Puntarenas": 868712,
+      "Heredia": 796186,
+      "Limon": 871083,
+      "Guanacaste": 691320
+    },
+    {
+      "semana": 2,
+      "San_Jose": 2443692,
+      "Alajuela": 1532347,
+      "Cartago": 749724,
+      "Puntarenas": 752545,
+      "Heredia": 679296,
+      "Limon": 656135,
+      "Guanacaste": 587534
+    },
+    {
+      "semana": 3,
+      "San_Jose": 2647287,
+      "Alajuela": 1708993,
+      "Cartago": 815671,
+      "Puntarenas": 847596,
+      "Heredia": 724576,
+      "Limon": 710859,
+      "Guanacaste": 658031
+    },
+    {
+      "semana": 4,
+      "San_Jose": 2592001,
+      "Alajuela": 1682427,
+      "Cartago": 875197,
+      "Puntarenas": 804323,
+      "Heredia": 740781,
+      "Limon": 760928,
+      "Guanacaste": 634799
+    },
+    {
+      "semana": 5,
+      "San_Jose": 2737892,
+      "Alajuela": 1764532,
+      "Cartago": 914672,
+      "Puntarenas": 883341,
+      "Heredia": 712252,
+      "Limon": 778111,
+      "Guanacaste": 725619
+    },
+    {
+      "semana": 6,
+      "San_Jose": 2665425,
+      "Alajuela": 1635804,
+      "Cartago": 787843,
+      "Puntarenas": 765623,
+      "Heredia": 754618,
+      "Limon": 729582,
+      "Guanacaste": 612338
+    },
+    {
+      "semana": 7,
+      "San_Jose": 2495720,
+      "Alajuela": 1718320,
+      "Cartago": 811642,
+      "Puntarenas": 780884,
+      "Heredia": 698612,
+      "Limon": 691515,
+      "Guanacaste": 608245
+    },
+    {
+      "semana": 8,
+      "San_Jose": 2416730,
+      "Alajuela": 1590834,
+      "Cartago": 832374,
+      "Puntarenas": 782037,
+      "Heredia": 759437,
+      "Limon": 747306,
+      "Guanacaste": 700931
+    },
+    {
+      "semana": 9,
+      "San_Jose": 2546839,
+      "Alajuela": 1623602,
+      "Cartago": 799144,
+      "Puntarenas": 836578,
+      "Heredia": 729945,
+      "Limon": 728409,
+      "Guanacaste": 621792
+    },
+    {
+      "semana": 10,
+      "San_Jose": 2455928,
+      "Alajuela": 1690911,
+      "Cartago": 772451,
+      "Puntarenas": 797415,
+      "Heredia": 692531,
+      "Limon": 707390,
+      "Guanacaste": 609254
+    },
+    {
+      "semana": 11,
+      "San_Jose": 2682234,
+      "Alajuela": 1671452,
+      "Cartago": 820097,
+      "Puntarenas": 820049,
+      "Heredia": 750036,
+      "Limon": 768210,
+      "Guanacaste": 663891
+    },
+    {
+      "semana": 12,
+      "San_Jose": 2589601,
+      "Alajuela": 1578093,
+      "Cartago": 789512,
+      "Puntarenas": 765145,
+      "Heredia": 723150,
+      "Limon": 720059,
+      "Guanacaste": 635788
+    },
+    {
+      "semana": 13,
+      "San_Jose": 2516332,
+      "Alajuela": 1734556,
+      "Cartago": 859833,
+      "Puntarenas": 857020,
+      "Heredia": 744820,
+      "Limon": 765149,
+      "Guanacaste": 701499
+    },
+    {
+      "semana": 14,
+      "San_Jose": 2489107,
+      "Alajuela": 1612581,
+      "Cartago": 878620,
+      "Puntarenas": 800943,
+      "Heredia": 732145,
+      "Limon": 701001,
+      "Guanacaste": 616589
+    },
+    {
+      "semana": 15,
+      "San_Jose": 2631884,
+      "Alajuela": 1650939,
+      "Cartago": 817083,
+      "Puntarenas": 821147,
+      "Heredia": 768389,
+      "Limon": 752962,
+      "Guanacaste": 693801
+    },
+    {
+      "semana": 16,
+      "San_Jose": 2557890,
+      "Alajuela": 1710221,
+      "Cartago": 844538,
+      "Puntarenas": 777593,
+      "Heredia": 716234,
+      "Limon": 740023,
+      "Guanacaste": 642878
+    },
+    {
+      "semana": 17,
+      "San_Jose": 2685909,
+      "Alajuela": 1665279,
+      "Cartago": 790678,
+      "Puntarenas": 792456,
+      "Heredia": 701512,
+      "Limon": 690429,
+      "Guanacaste": 686023
+    }
   ],
-"prepago_activos_por_semana": [
-        { "semana": 1, "cantidad": 9865000 },
-        { "semana": 2, "cantidad": 8740000 },
-        { "semana": 3, "cantidad": 9312000 },
-        { "semana": 4, "cantidad": 10055000 },
-        { "semana": 5, "cantidad": 9178000 },
-        { "semana": 6, "cantidad": 10251000 },
-        { "semana": 7, "cantidad": 8874000 },
-        { "semana": 8, "cantidad": 9675000 },
-        { "semana": 9, "cantidad": 9391000 },
-        { "semana": 10, "cantidad": 10062000 },
-        { "semana": 11, "cantidad": 8712000 },
-        { "semana": 12, "cantidad": 9586000 },
-        { "semana": 13, "cantidad": 9237000 },
-        { "semana": 14, "cantidad": 10180000 },
-        { "semana": 15, "cantidad": 8875000 },
-        { "semana": 16, "cantidad": 9743000 },
-        { "semana": 17, "cantidad": 9421000 }
-  ],
-"postpago_activos_semanal_provincia": [
-        {
-            "semana": 1,
-            "San_Jose": 2903848,
-            "Alajuela": 1820522,
-            "Cartago": 982450,
-            "Puntarenas": 868712,
-            "Heredia": 796186,
-            "Limon": 871083,
-            "Guanacaste": 691320
-        },
-        {
-            "semana": 2,
-            "San_Jose": 2443692,
-            "Alajuela": 1532347,
-            "Cartago": 749724,
-            "Puntarenas": 752545,
-            "Heredia": 679296,
-            "Limon": 656135,
-            "Guanacaste": 587534
-        },
-        {
-            "semana": 3,
-            "San_Jose": 2647287,
-            "Alajuela": 1708993,
-            "Cartago": 815671,
-            "Puntarenas": 847596,
-            "Heredia": 724576,
-            "Limon": 710859,
-            "Guanacaste": 658031
-        },
-        {
-            "semana": 4,
-            "San_Jose": 2592001,
-            "Alajuela": 1682427,
-            "Cartago": 875197,
-            "Puntarenas": 804323,
-            "Heredia": 740781,
-            "Limon": 760928,
-            "Guanacaste": 634799
-        },
-        {
-            "semana": 5,
-            "San_Jose": 2737892,
-            "Alajuela": 1764532,
-            "Cartago": 914672,
-            "Puntarenas": 883341,
-            "Heredia": 712252,
-            "Limon": 778111,
-            "Guanacaste": 725619
-        },
-        {
-            "semana": 6,
-            "San_Jose": 2665425,
-            "Alajuela": 1635804,
-            "Cartago": 787843,
-            "Puntarenas": 765623,
-            "Heredia": 754618,
-            "Limon": 729582,
-            "Guanacaste": 612338
-        },
-        {
-            "semana": 7,
-            "San_Jose": 2495720,
-            "Alajuela": 1718320,
-            "Cartago": 811642,
-            "Puntarenas": 780884,
-            "Heredia": 698612,
-            "Limon": 691515,
-            "Guanacaste": 608245
-        },
-        {
-            "semana": 8,
-            "San_Jose": 2416730,
-            "Alajuela": 1590834,
-            "Cartago": 832374,
-            "Puntarenas": 782037,
-            "Heredia": 759437,
-            "Limon": 747306,
-            "Guanacaste": 700931
-        },
-        {
-            "semana": 9,
-            "San_Jose": 2546839,
-            "Alajuela": 1623602,
-            "Cartago": 799144,
-            "Puntarenas": 836578,
-            "Heredia": 729945,
-            "Limon": 728409,
-            "Guanacaste": 621792
-        },
-        {
-            "semana": 10,
-            "San_Jose": 2455928,
-            "Alajuela": 1690911,
-            "Cartago": 772451,
-            "Puntarenas": 797415,
-            "Heredia": 692531,
-            "Limon": 707390,
-            "Guanacaste": 609254
-        },
-        {
-            "semana": 11,
-            "San_Jose": 2682234,
-            "Alajuela": 1671452,
-            "Cartago": 820097,
-            "Puntarenas": 820049,
-            "Heredia": 750036,
-            "Limon": 768210,
-            "Guanacaste": 663891
-        },
-        {
-            "semana": 12,
-            "San_Jose": 2589601,
-            "Alajuela": 1578093,
-            "Cartago": 789512,
-            "Puntarenas": 765145,
-            "Heredia": 723150,
-            "Limon": 720059,
-            "Guanacaste": 635788
-        },
-        {
-            "semana": 13,
-            "San_Jose": 2516332,
-            "Alajuela": 1734556,
-            "Cartago": 859833,
-            "Puntarenas": 857020,
-            "Heredia": 744820,
-            "Limon": 765149,
-            "Guanacaste": 701499
-        },
-        {
-            "semana": 14,
-            "San_Jose": 2489107,
-            "Alajuela": 1612581,
-            "Cartago": 878620,
-            "Puntarenas": 800943,
-            "Heredia": 732145,
-            "Limon": 701001,
-            "Guanacaste": 616589
-        },
-        {
-            "semana": 15,
-            "San_Jose": 2631884,
-            "Alajuela": 1650939,
-            "Cartago": 817083,
-            "Puntarenas": 821147,
-            "Heredia": 768389,
-            "Limon": 752962,
-            "Guanacaste": 693801
-        },
-        {
-            "semana": 16,
-            "San_Jose": 2557890,
-            "Alajuela": 1710221,
-            "Cartago": 844538,
-            "Puntarenas": 777593,
-            "Heredia": 716234,
-            "Limon": 740023,
-            "Guanacaste": 642878
-        },
-        {
-            "semana": 17,
-            "San_Jose": 2685909,
-            "Alajuela": 1665279,
-            "Cartago": 790678,
-            "Puntarenas": 792456,
-            "Heredia": 701512,
-            "Limon": 690429,
-            "Guanacaste": 686023
-        }
-  ],
-"prepago_activos_semanal_provincia": [
-        {
-            "semana": 1,
-            "San_Jose": 3224310,
-            "Alajuela": 2053712,
-            "Cartago": 1092034,
-            "Puntarenas": 956840,
-            "Heredia": 902630,
-            "Limon": 983759,
-            "Guanacaste": 825324
-        },
-        {
-            "semana": 2,
-            "San_Jose": 2950321,
-            "Alajuela": 1824126,
-            "Cartago": 1015852,
-            "Puntarenas": 851926,
-            "Heredia": 867129,
-            "Limon": 847232,
-            "Guanacaste": 709428
-        },
-        {
-            "semana": 3,
-            "San_Jose": 3045129,
-            "Alajuela": 1914047,
-            "Cartago": 941762,
-            "Puntarenas": 987154,
-            "Heredia": 815302,
-            "Limon": 939621,
-            "Guanacaste": 777236
-        },
-        {
-            "semana": 4,
-            "San_Jose": 2750045,
-            "Alajuela": 1981337,
-            "Cartago": 1095327,
-            "Puntarenas": 917433,
-            "Heredia": 929045,
-            "Limon": 804913,
-            "Guanacaste": 746831
-        },
-        {
-            "semana": 5,
-            "San_Jose": 3078625,
-            "Alajuela": 1760456,
-            "Cartago": 1012114,
-            "Puntarenas": 1004135,
-            "Heredia": 885940,
-            "Limon": 936178,
-            "Guanacaste": 788402
-        },
-        {
-            "semana": 6,
-            "San_Jose": 2689309,
-            "Alajuela": 1644325,
-            "Cartago": 955384,
-            "Puntarenas": 842903,
-            "Heredia": 937223,
-            "Limon": 926382,
-            "Guanacaste": 839548
-        },
-        {
-            "semana": 7,
-            "San_Jose": 3140932,
-            "Alajuela": 1894852,
-            "Cartago": 1057001,
-            "Puntarenas": 872309,
-            "Heredia": 826311,
-            "Limon": 894523,
-            "Guanacaste": 716294
-        },
-        {
-            "semana": 8,
-            "San_Jose": 3108527,
-            "Alajuela": 1930481,
-            "Cartago": 964534,
-            "Puntarenas": 896120,
-            "Heredia": 906701,
-            "Limon": 916832,
-            "Guanacaste": 829325
-        },
-        {
-            "semana": 9,
-            "San_Jose": 2871094,
-            "Alajuela": 1740932,
-            "Cartago": 1084230,
-            "Puntarenas": 973465,
-            "Heredia": 872543,
-            "Limon": 886542,
-            "Guanacaste": 792130
-        },
-        {
-            "semana": 10,
-            "San_Jose": 2967425,
-            "Alajuela": 1922847,
-            "Cartago": 989573,
-            "Puntarenas": 884120,
-            "Heredia": 899782,
-            "Limon": 923151,
-            "Guanacaste": 783252
-        },
-        {
-            "semana": 11,
-            "San_Jose": 2790118,
-            "Alajuela": 1837482,
-            "Cartago": 997123,
-            "Puntarenas": 942338,
-            "Heredia": 875498,
-            "Limon": 936420,
-            "Guanacaste": 829452
-        },
-        {
-            "semana": 12,
-            "San_Jose": 3068523,
-            "Alajuela": 1895231,
-            "Cartago": 1040123,
-            "Puntarenas": 865730,
-            "Heredia": 916230,
-            "Limon": 854672,
-            "Guanacaste": 754231
-        },
-        {
-            "semana": 13,
-            "San_Jose": 3005432,
-            "Alajuela": 1809231,
-            "Cartago": 949231,
-            "Puntarenas": 883245,
-            "Heredia": 853245,
-            "Limon": 888145,
-            "Guanacaste": 709235
-        },
-        {
-            "semana": 14,
-            "San_Jose": 2850213,
-            "Alajuela": 1712384,
-            "Cartago": 993782,
-            "Puntarenas": 946378,
-            "Heredia": 917384,
-            "Limon": 841273,
-            "Guanacaste": 802147
-        },
-        {
-            "semana": 15,
-            "San_Jose": 2934234,
-            "Alajuela": 1748234,
-            "Cartago": 915612,
-            "Puntarenas": 927567,
-            "Heredia": 873415,
-            "Limon": 924315,
-            "Guanacaste": 719834
-        },
-        {
-            "semana": 16,
-            "San_Jose": 3178452,
-            "Alajuela": 1869235,
-            "Cartago": 1024123,
-            "Puntarenas": 899123,
-            "Heredia": 923671,
-            "Limon": 931245,
-            "Guanacaste": 793215
-        },
-        {
-            "semana": 17,
-            "San_Jose": 2881345,
-            "Alajuela": 1760457,
-            "Cartago": 1017342,
-            "Puntarenas": 910241,
-            "Heredia": 895042,
-            "Limon": 875934,
-            "Guanacaste": 759435
-        }
+  "prepago_activos_semanal_provincia": [
+    {
+      "semana": 1,
+      "San_Jose": 3224310,
+      "Alajuela": 2053712,
+      "Cartago": 1092034,
+      "Puntarenas": 956840,
+      "Heredia": 902630,
+      "Limon": 983759,
+      "Guanacaste": 825324
+    },
+    {
+      "semana": 2,
+      "San_Jose": 2950321,
+      "Alajuela": 1824126,
+      "Cartago": 1015852,
+      "Puntarenas": 851926,
+      "Heredia": 867129,
+      "Limon": 847232,
+      "Guanacaste": 709428
+    },
+    {
+      "semana": 3,
+      "San_Jose": 3045129,
+      "Alajuela": 1914047,
+      "Cartago": 941762,
+      "Puntarenas": 987154,
+      "Heredia": 815302,
+      "Limon": 939621,
+      "Guanacaste": 777236
+    },
+    {
+      "semana": 4,
+      "San_Jose": 2750045,
+      "Alajuela": 1981337,
+      "Cartago": 1095327,
+      "Puntarenas": 917433,
+      "Heredia": 929045,
+      "Limon": 804913,
+      "Guanacaste": 746831
+    },
+    {
+      "semana": 5,
+      "San_Jose": 3078625,
+      "Alajuela": 1760456,
+      "Cartago": 1012114,
+      "Puntarenas": 1004135,
+      "Heredia": 885940,
+      "Limon": 936178,
+      "Guanacaste": 788402
+    },
+    {
+      "semana": 6,
+      "San_Jose": 2689309,
+      "Alajuela": 1644325,
+      "Cartago": 955384,
+      "Puntarenas": 842903,
+      "Heredia": 937223,
+      "Limon": 926382,
+      "Guanacaste": 839548
+    },
+    {
+      "semana": 7,
+      "San_Jose": 3140932,
+      "Alajuela": 1894852,
+      "Cartago": 1057001,
+      "Puntarenas": 872309,
+      "Heredia": 826311,
+      "Limon": 894523,
+      "Guanacaste": 716294
+    },
+    {
+      "semana": 8,
+      "San_Jose": 3108527,
+      "Alajuela": 1930481,
+      "Cartago": 964534,
+      "Puntarenas": 896120,
+      "Heredia": 906701,
+      "Limon": 916832,
+      "Guanacaste": 829325
+    },
+    {
+      "semana": 9,
+      "San_Jose": 2871094,
+      "Alajuela": 1740932,
+      "Cartago": 1084230,
+      "Puntarenas": 973465,
+      "Heredia": 872543,
+      "Limon": 886542,
+      "Guanacaste": 792130
+    },
+    {
+      "semana": 10,
+      "San_Jose": 2967425,
+      "Alajuela": 1922847,
+      "Cartago": 989573,
+      "Puntarenas": 884120,
+      "Heredia": 899782,
+      "Limon": 923151,
+      "Guanacaste": 783252
+    },
+    {
+      "semana": 11,
+      "San_Jose": 2790118,
+      "Alajuela": 1837482,
+      "Cartago": 997123,
+      "Puntarenas": 942338,
+      "Heredia": 875498,
+      "Limon": 936420,
+      "Guanacaste": 829452
+    },
+    {
+      "semana": 12,
+      "San_Jose": 3068523,
+      "Alajuela": 1895231,
+      "Cartago": 1040123,
+      "Puntarenas": 865730,
+      "Heredia": 916230,
+      "Limon": 854672,
+      "Guanacaste": 754231
+    },
+    {
+      "semana": 13,
+      "San_Jose": 3005432,
+      "Alajuela": 1809231,
+      "Cartago": 949231,
+      "Puntarenas": 883245,
+      "Heredia": 853245,
+      "Limon": 888145,
+      "Guanacaste": 709235
+    },
+    {
+      "semana": 14,
+      "San_Jose": 2850213,
+      "Alajuela": 1712384,
+      "Cartago": 993782,
+      "Puntarenas": 946378,
+      "Heredia": 917384,
+      "Limon": 841273,
+      "Guanacaste": 802147
+    },
+    {
+      "semana": 15,
+      "San_Jose": 2934234,
+      "Alajuela": 1748234,
+      "Cartago": 915612,
+      "Puntarenas": 927567,
+      "Heredia": 873415,
+      "Limon": 924315,
+      "Guanacaste": 719834
+    },
+    {
+      "semana": 16,
+      "San_Jose": 3178452,
+      "Alajuela": 1869235,
+      "Cartago": 1024123,
+      "Puntarenas": 899123,
+      "Heredia": 923671,
+      "Limon": 931245,
+      "Guanacaste": 793215
+    },
+    {
+      "semana": 17,
+      "San_Jose": 2881345,
+      "Alajuela": 1760457,
+      "Cartago": 1017342,
+      "Puntarenas": 910241,
+      "Heredia": 895042,
+      "Limon": 875934,
+      "Guanacaste": 759435
+    }
   ]
 }
-
-
