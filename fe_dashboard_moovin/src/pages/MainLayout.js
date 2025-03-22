@@ -17,12 +17,13 @@ const Navbar = () => (
     <h1
       style={{
         width: "100%",
-        fontSize: "1.1rem",
+        fontSize: "1rem",
         margin: 0,
-        textAlign:"center"
+        textAlign:"center",
+        fontFamily:"system-ui"
       }}
     >
-      Kölbi Control Tower ⭐
+      ⭐ Kölbi Control Tower ⭐
     </h1>
   </div>
 );
@@ -53,7 +54,7 @@ const MainLayout = ({ children }) => {
         <div
           style={{
             display: "flex",
-            justifyContent: "space-around",
+            justifyContent: "space-evenly",
             alignItems: "center",
             backgroundColor: "#fff",
             padding: "10px",
@@ -70,7 +71,8 @@ const MainLayout = ({ children }) => {
               cursor: "pointer",
               fontWeight: "bold",
               color: "#031B4A",
-              fontSize: "1.2rem",
+              fontSize: "1.2rem", 
+              fontFamily:"system-ui"
             }}
           >
             Ventas en Tiempo Real
@@ -83,6 +85,7 @@ const MainLayout = ({ children }) => {
               fontWeight: "bold",
               color: "#031B4A",
               fontSize: "1.2rem",
+              fontFamily:"system-ui"
             }}
           >
             Puntos de Venta
@@ -95,6 +98,7 @@ const MainLayout = ({ children }) => {
               fontWeight: "bold",
               color: "#031B4A",
               fontSize: "1.2rem",
+              fontFamily:"system-ui"
             }}
           >
             Actividad de Clientes

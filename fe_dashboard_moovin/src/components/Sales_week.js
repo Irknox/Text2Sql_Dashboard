@@ -16,43 +16,45 @@ const Sales_week = () => {
 
   useEffect(() => {
     if (chartData && chartData.series) {
-      const salesChart = echarts.init(document.getElementById("salesWeekChart"));
-      
+      const salesChart = echarts.init(
+        document.getElementById("salesWeekChart")
+      );
+
       const salesOptions = {
         tooltip: {
           trigger: "axis",
           axisPointer: {
-            type: "shadow"
-          }
+            type: "shadow",
+          },
         },
         toolbox: {
           feature: {
             dataView: { show: true, readOnly: false },
             magicType: { show: true, type: ["line", "bar"] },
             restore: { show: true },
-            saveAsImage: { show: true }
-          }
+            saveAsImage: { show: true },
+          },
         },
         legend: {
-          data: chartData.legend.data
+          data: chartData.legend.data,
         },
         xAxis: [
           {
             type: "category",
             data: chartData.xAxis.data,
             axisPointer: {
-              type: "shadow"
-            }
-          }
+              type: "shadow",
+            },
+          },
         ],
         yAxis: [
           {
             type: "value",
             name: "Ventas ultimos 2 años",
             axisLabel: {
-              formatter: "{value}"
-            }
-          }
+              formatter: "{value}",
+            },
+          },
         ],
         series: chartData.series.map((serie) => ({
           name: serie.name,
@@ -60,10 +62,10 @@ const Sales_week = () => {
           data: serie.data,
           tooltip: {
             valueFormatter: function (value) {
-              return "₡"+ value;
-            }
-          }
-        }))
+              return "₡" + value;
+            },
+          },
+        })),
       };
 
       salesChart.setOption(salesOptions);
@@ -71,9 +73,21 @@ const Sales_week = () => {
   }, [chartData]);
 
   return (
-    <div className="sales_chart_container">
-      <h1></h1>
-      <div id="salesWeekChart" style={{ width: "1200px", height: "800px" }}></div>
+    <div
+      style={{
+        backgroundColor: "white",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        width: "90%",
+        justifySelf: "center",
+        justifyContent:"center",
+        height: "100%",
+      }}
+    >
+      <h1 style={{ fontFamily: "system-ui", color: "#302e2e", justifySelf:"center" }}>
+        Ventas Semanales
+      </h1>
+      <div id="salesWeekChart" style={{ width: "100%", height: "90%" }}></div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
     </div>

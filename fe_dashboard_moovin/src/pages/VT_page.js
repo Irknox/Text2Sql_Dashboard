@@ -11,7 +11,7 @@ import { Box } from "@mui/material";
 export default function VT_page() {
     return (
         <MainLayout>
-            <Box sx={{ width: '75%', height: '400px', justifyItems:"center", 
+            <Box sx={{ width: '75%', height: '350px', justifyItems:"center", 
                        alignItems:"center", marginRight: 'auto', marginLeft: 'auto' }}>
                 <SGPV_cards />
             </Box>
@@ -30,9 +30,9 @@ export default function VT_page() {
                     gridColumn="1"
                     sx={{
                         display: "flex",
-                        justifySelf:"center", 
+                        justifySelf:"right", 
                         justifyContent:"center",
-                        width: '100%', 
+                        width: '90%', 
                         height:"100%",
                         padding:"5px",
                     }}
@@ -60,11 +60,10 @@ export default function VT_page() {
                 <Box gridColumn="1"
                  sx={{
                     display: "flex",
-                    justifySelf:"center", 
+                    justifySelf:"right", 
                     justifyContent:"center",
-                    width: '100%', 
-                    height:"100%",
-                    padding:"5px",
+                    width: '95%', 
+                    height:"80%",
                 }}
                 >
                     <VSH_componente />

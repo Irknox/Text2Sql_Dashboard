@@ -12,7 +12,10 @@ const AC_provinces_postpay_weekly = () => {
         setAC_provinces_data(response.postpago_activos_semanal_provincia);
       })
       .catch((error) => {
-        console.log("Error obteniendo datos de postpagos por provincia:", error);
+        console.log(
+          "Error obteniendo datos de postpagos por provincia:",
+          error
+        );
       });
   }, []);
 
@@ -34,12 +37,14 @@ const AC_provinces_postpay_weekly = () => {
           },
         },
         formatter: function (params) {
-          let tooltip = '';
+          let tooltip = "";
           params.forEach((param) => {
-            tooltip += `${param.seriesName}: ${param.value.toLocaleString("de-DE")} usuarios<br/>`;
+            tooltip += `${param.seriesName}: ${param.value.toLocaleString(
+              "de-DE"
+            )} usuarios<br/>`;
           });
           return tooltip;
-        }
+        },
       },
       toolbox: {
         feature: {
@@ -86,53 +91,53 @@ const AC_provinces_postpay_weekly = () => {
           name: "San José",
           type: "line",
           itemStyle: {
-            color: "#2c71f3 ", 
+            color: "#2c71f3 ",
           },
           tooltip: {
             valueFormatter: function (value) {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.San_Jose),
+          data: AC_provinces_data.map((item) => item.San_Jose),
         },
         {
           name: "Alajuela",
           type: "line",
           itemStyle: {
-            color: "#f54c58", 
+            color: "#f54c58",
           },
           tooltip: {
             valueFormatter: function (value) {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.Alajuela),
+          data: AC_provinces_data.map((item) => item.Alajuela),
         },
         {
           name: "Cartago",
           type: "bar",
           itemStyle: {
-            color: "#06d4c4", 
+            color: "#06d4c4",
           },
           tooltip: {
             valueFormatter: function (value) {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.Cartago),
+          data: AC_provinces_data.map((item) => item.Cartago),
         },
         {
           name: "Puntarenas",
           type: "bar",
           itemStyle: {
-            color: "#f4a327", 
+            color: "#f4a327",
           },
           tooltip: {
             valueFormatter: function (value) {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.Puntarenas),
+          data: AC_provinces_data.map((item) => item.Puntarenas),
         },
         {
           name: "Heredia",
@@ -145,33 +150,33 @@ const AC_provinces_postpay_weekly = () => {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.Heredia),
+          data: AC_provinces_data.map((item) => item.Heredia),
         },
         {
           name: "Limon",
           type: "bar",
           itemStyle: {
-            color: "#19f552", 
+            color: "#19f552",
           },
           tooltip: {
             valueFormatter: function (value) {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.Limon),
+          data: AC_provinces_data.map((item) => item.Limon),
         },
         {
           name: "Guanacaste",
           type: "bar",
           itemStyle: {
-            color: "#cf3ff9", 
+            color: "#cf3ff9",
           },
           tooltip: {
             valueFormatter: function (value) {
               return value.toLocaleString("de-DE") + " usuarios";
             },
           },
-          data: AC_provinces_data.map(item => item.Guanacaste),
+          data: AC_provinces_data.map((item) => item.Guanacaste),
         },
       ],
     };
@@ -183,8 +188,21 @@ const AC_provinces_postpay_weekly = () => {
     };
   }, [AC_provinces_data]);
 
-  return <div id="AC_provinces_postpay_weekly_chart" style={{ width: "100%", height: "400px" }}></div>;
-
+  return (
+    <div
+      id="AC_provinces_postpay_weekly_chart"
+      style={{
+        display: "flex",
+        backgroundColor: "#f4f4f4",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        width: "95%",
+        height: "100%",
+        justifySelf: "right",
+        alignSelf: "center",
+      }}
+    ></div>
+  );
 };
 
 export default AC_provinces_postpay_weekly;
