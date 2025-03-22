@@ -48,12 +48,13 @@ const AC_users_cards = () => {
             <Card
               key={card.id}
               sx={{
-                width: '525px',  
-                height: '180px', 
+                width: '300px',  
+                height: '120px', 
                 padding: 2,
-                boxShadow: '4px 6px 8px rgba(0, 0, 0, 0.51)',
-                backgroundColor: '#ddeae1',
+                boxShadow: '3px 5px 7px rgba(8, 160, 160, 0.4)',
+                backgroundColor:'rgb(255, 255, 255)',
                 borderRadius: '10px',
+                border: '1px solid rgba(99, 96, 96, 0.62)',
                 display: 'flex',
                 alignItems: 'center',
               }}
@@ -62,7 +63,7 @@ const AC_users_cards = () => {
                 onClick={() => setSelectedCard(index)}
                 data-active={selectedCard === index ? "" : undefined}
                 sx={{
-                  height: "90%",
+                  height: "100%",
                   "&[data-active]": {
                     backgroundColor: "action.selected",
                     "&:hover": {
@@ -72,10 +73,10 @@ const AC_users_cards = () => {
                 }}
               >
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                  <Typography variant="h6" sx={{ color: '#031B4A', fontWeight: 'bold', textAlign: 'center' }}>
+                  <Typography variant="h6" sx={{ color: '#031B4A', fontWeight: 'bold', textAlign: 'center', fontSize: '16px' }}>
                     {card.title}
                   </Typography>
-                  <Typography variant="h4" sx={{ color: '#31c3bc', marginTop: '10px', textAlign: 'center' }}>
+                  <Typography variant="h4" sx={{ color: '#31c3bc', marginTop: '8px', textAlign: 'left' }}>
                     <ArrowDropUpIcon sx={{ color: 'green', marginRight: 1 }} />
                     {card.description}
                   </Typography>

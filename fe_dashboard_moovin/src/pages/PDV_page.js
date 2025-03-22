@@ -15,10 +15,10 @@ export default function PDVPage() {
             alignItems="center"  
             sx={{ width: '100%', margin: '0 auto' }} 
         >
-            <Box sx={{ width: '100%', height: '600px' }}>
+            <Box sx={{ width: '75%', height: '200px' }}>
               <PDV_cards_data_component />
             </Box>
-            <Box sx={{ width: '50%', height: '500px' }}>
+            <Box sx={{ width: '50%', height: '600px' }}>
               <LastSixMonthsSalesChart />
             </Box>
             <Box sx={{ width: '50%', height: '500px' }}>

@@ -19,15 +19,16 @@ const SGPV_cards = () => {
   }, []);
 
   const cards = [
-    { id: 1, title: "Ingresos Totales", value: ` ${data.totalVentas || 0}`, icon: <Home size={24} /> },
-    { id: 2, title: "Recargas Electrónicas", value: ` ${data.recargaTiempoAire || 0}`, icon: <MonitorCheck size={24} /> },
-    { id: 3, title: "Recargas Físicas ₡", value: ` ${data.tarjetasFisicasColones || 0}`, icon: <CreditCard size={24} /> },
-    { id: 4, title: "Recargas Físicas $", value: ` ${data.tarjetasFisicasDolares || 0}`, icon: <CreditCard size={24} /> },
-    { id: 5, title: "Recargas Carcelarias ₡", value: ` ${data.recargasCarcelariasColones || 0}`, icon: <PhoneForwarded size={24} /> },
-    { id: 6, title: "Recargas Carcelarias $", value: ` ${data.recargasCarcelariasDolares || 0}`, icon: <PhoneForwarded size={24} /> },
-    { id: 7, title: "SIM Cards Vendidas", value: `${data.simsVendidas || 0}`, icon: <Smartphone size={24} /> },
-    { id: 8, title: "SIM Cards Activadas", value: `${data.simsActivadas || 0}`, icon: <Smartphone size={24} /> }
-  ];
+    { id: 1, title: "Ingresos Totales", value: `${(data.totalVentas || 0).toLocaleString('es-ES')}`, icon: <Home size={22} /> },
+    { id: 2, title: "Recargas Electrónicas", value: `${(data.recargaTiempoAire || 0).toLocaleString('es-ES')}`, icon: <MonitorCheck size={22} /> },
+    { id: 3, title: "Recargas Físicas ₡", value: `${(data.tarjetasFisicasColones || 0).toLocaleString('es-ES')}`, icon: <CreditCard size={22} /> },
+    { id: 4, title: "Recargas Físicas $", value: `${(data.tarjetasFisicasDolares || 0).toLocaleString('es-ES')}`, icon: <CreditCard size={22} /> },
+    { id: 5, title: "Recargas Carcelarias ₡", value: `${(data.recargasCarcelariasColones || 0).toLocaleString('es-ES')}`, icon: <PhoneForwarded size={22} /> },
+    { id: 6, title: "Recargas Carcelarias $", value: `${(data.recargasCarcelariasDolares || 0).toLocaleString('es-ES')}`, icon: <PhoneForwarded size={22} /> },
+    { id: 7, title: "SIM Cards Vendidas", value: `${(data.simsVendidas || 0).toLocaleString('es-ES')}`, icon: <Smartphone size={22} /> },
+    { id: 8, title: "SIM Cards Activadas", value: `${(data.simsActivadas || 0).toLocaleString('es-ES')}`, icon: <Smartphone size={22} /> }
+];
+
 
   return (
     <Box
@@ -40,10 +41,13 @@ const SGPV_cards = () => {
         <Card
           key={card.id}
           sx={{
+            width: '250px',  
+            height: '100px', 
             padding: 2,
-            boxShadow: '4px 6px 8px rgba(0, 0, 0, 0.51)',
-            backgroundColor: '#ddeae1',
+            boxShadow: '3px 5px 7px rgba(8, 160, 160, 0.4)',
+            backgroundColor:'rgb(255, 255, 255)',
             borderRadius: '10px',
+            border: '1px solid rgba(99, 96, 96, 0.62)',
             display: 'flex',
             alignItems: 'center', 
           }}
@@ -52,10 +56,10 @@ const SGPV_cards = () => {
             <CardContent sx={{ display: 'flex', alignItems: 'rigth' }}>
               <Box sx={{ marginRight: 2 }}>{card.icon}</Box> {/* Espacio entre icono y texto */}
               <div>
-                <Typography variant="h6" style={{ color: '#031B4A', fontWeight: 'bold' }}>
+                <Typography variant="h6" style={{ color: '#031B4A', fontWeight: 'bold', fontSize: '15px' }}>
                   {card.title}
                 </Typography>
-                <Typography variant="h4" style={{ color: '#31c3bc', marginTop: '10px' }}>
+                <Typography variant="h4" style={{ color: '#31c3bc', marginTop: '8px', textAlign: 'left' }}>
                   {card.value}
                 </Typography>
               </div>
