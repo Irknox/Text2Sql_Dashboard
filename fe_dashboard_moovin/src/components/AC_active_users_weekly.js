@@ -29,8 +29,10 @@ const AC_active_users_weekly = () => {
   useEffect(() => {
     if (prepayData.length === 0 || postpayData.length === 0) return;
 
-    const chartDom = chartRef.current; // Usar ref para acceder al contenedor
-    if (!chartDom) return;  // Verificar si el contenedor existe
+    const chartDom = document.getElementById("active_users_chart");
+    const myChart = echarts.init(chartDom);
+
+    const xAxisData = prepayData.map((item) => `Semana ${item.semana}`);
 
     const myChart = echarts.init(chartDom); // Inicializamos el gráfico aquí
 
@@ -103,7 +105,8 @@ const AC_active_users_weekly = () => {
     };
   }, [prepayData, postpayData]);
 
-  return <div ref={chartRef} style={{ width: "100%", height: "500px" }}></div>;
+  return <div id="active_users_chart" style={{ width: "100%", height: "400px" }}></div>;
+
 };
 
 export default AC_active_users_weekly;

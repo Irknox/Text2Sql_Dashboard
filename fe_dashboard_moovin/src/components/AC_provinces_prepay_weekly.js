@@ -18,8 +18,9 @@ const AC_provinces_prepay_weekly = () => {
   }, []);
 
   useEffect(() => {
-    const chartDom = chartRef.current; // Usar ref para acceder al contenedor
-    if (!chartDom) return;  // Verificar si el contenedor existe
+    var chartDom = document.getElementById("AC_provinces_prepay_weekly");
+    var myChart = echarts.init(chartDom);
+    var option;
 
     const myChart = echarts.init(chartDom); // Inicializar el gráfico con echarts.init
     const semanas = Array.from({ length: 17 }, (_, i) => `Semana ${i + 1}`);
@@ -183,7 +184,8 @@ const AC_provinces_prepay_weekly = () => {
     };
   }, [AC_provinces_data]);
 
-  return <div ref={chartRef} style={{ width: "100%", height: "500px" }}></div>;
+  return <div id="AC_provinces_prepay_weekly" style={{ width: "100%", height: "400px" }}></div>;
+
 };
 
 export default AC_provinces_prepay_weekly;
