@@ -16,7 +16,7 @@ const AC_provinces_postpay_weekly = () => {
   }, []);
 
   useEffect(() => {
-    var chartDom = document.getElementById("main");
+    var chartDom = document.getElementById("AC_provinces_postpay_weekly_chart");
     var myChart = echarts.init(chartDom);
     var option;
 
@@ -181,7 +181,7 @@ const AC_provinces_postpay_weekly = () => {
     };
   }, [AC_provinces_data]);
 
-  return <div id="main" style={{ width: "100%", height: "400px" }}></div>;
+  return <div id="AC_provinces_postpay_weekly_chart" style={{ width: "100%", height: "400px" }}></div>;
 };
 
 export default AC_provinces_postpay_weekly;

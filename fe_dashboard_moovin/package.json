@@ -19,6 +19,7 @@
     "next": "^15.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-gauge-component": "^1.2.64",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1"
   }
