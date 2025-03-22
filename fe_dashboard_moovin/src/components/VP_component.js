@@ -60,11 +60,13 @@ const VP_component = () => {
     return (
         <div style={{
             width: '100%',
-            height: '400px',
+            height: '80%',
             backgroundColor: '#f4f4f4',
             borderRadius: '10px',
             padding: '20px',
-            boxShadow: '0px 4px 12px rgba(0,0,0,0.1)'
+            boxShadow: '0px 4px 12px rgba(0,0,0,0.1)',
+            justifySelf:"right",
+            alignSelf:"center"
         }}>
             <ReactECharts option={options} style={{ width: '100%', height: '100%' }} />
         </div>

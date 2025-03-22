@@ -6,45 +6,73 @@ import SPA_component from "@/components/SPA_component";
 import VSH_componente from "@/components/VSH_componente";
 import RPH_componente from "@/components/RPH_componente";
 import VTR_gauges from "@/components/VTR_gauges";
-import { Box } from "@mui/material"; 
+import { Box } from "@mui/material";
 
 export default function VT_page() {
     return (
         <MainLayout>
-
             <Box sx={{ width: '75%', height: '400px', justifyItems:"center", 
                        alignItems:"center", marginRight: 'auto', marginLeft: 'auto' }}>
-                    <SGPV_cards />
+                <SGPV_cards />
             </Box>
 
             <Box
                 display="grid"
-                gridTemplateColumns="repeat(2, 1fr)" // Dos columnas para un mejor ajuste
+                gridTemplateRows="1fr 1fr" 
+                gridTemplateColumns="1fr 1fr" 
                 gap={3}
-                justifyItems="center"
-                alignItems="center"
-                sx={{ width: '100%', margin: '0 auto' }}
+                sx={{height:"700px", width: '100%', margin: '0 auto' }}
+                
             >
-                <Box sx={{ width: '50%', height: '500px' }}>
+                {/* Primer Box: Columna 1 */}
+                <Box 
+                    gridRow="1 / span 2" 
+                    gridColumn="1"
+                    sx={{
+                        display: "flex",
+                        justifySelf:"center", 
+                        justifyContent:"center",
+                        width: '100%', 
+                        height:"100%",
+                        padding:"5px",
+                    }}
+                >
+                    <Box width="100%" sx={{display:"flex", justifyContent:"right"}}>
                     <VP_component />
+                    </Box>
+                    
                 </Box>
 
-                <Box sx={{ width: '50%', height: '500px' }}>
+                {/* Segundo Box: Columna 2 */}
+                <Box gridColumn="2" gridRow="1" >
                     <SPA_component />
                 </Box>
-            
-                <Box sx={{ width: '50%', height: '500px' }}>
+                <Box gridColumn="2" gridRow="2">
                     <RPH_componente />
                 </Box>
+            </Box>
 
-                <Box sx={{ width: '50%', height: '500px' }}>
+            <Box gridRow={2}
+                display="grid"
+                gridTemplateColumns="60% 1fr"
+                sx={{height:"750px", width: '100%', margin: '0 auto' }}
+                >
+                <Box gridColumn="1"
+                 sx={{
+                    display: "flex",
+                    justifySelf:"center", 
+                    justifyContent:"center",
+                    width: '100%', 
+                    height:"100%",
+                    padding:"5px",
+                }}
+                >
                     <VSH_componente />
                 </Box>
 
-                <Box sx={{ width: '100%', height: '500px' }}>
+                <Box gridColumn="2" display="flex" flexDirection="column" >
                     <VTR_gauges />
                 </Box>
-
             </Box>
         </MainLayout>
     );
