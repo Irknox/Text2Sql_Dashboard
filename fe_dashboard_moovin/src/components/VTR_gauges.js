@@ -33,17 +33,14 @@ const VTR_gauges = () => {
     return <div>Cargando...</div>;
   }
 
-  // Obtener la fecha actual y los días restantes del mes
   const today = new Date();
   const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
   const daysRemaining = lastDayOfMonth.getDate() - today.getDate();
 
-  // Calcular el promedio diario de ventas basado en lo que se ha vendido hasta el momento
   const Recargas_daily_average =
     Recargas_prevision.monto_mes_actual / today.getDate();
   const SIMS_daily_average = SIMS_prevision.monto_mes_actual / today.getDate();
 
-  // Proyectar el total del mes actual basándose en la variación y lo vendido hasta el momento
   const Recargas_projected_total =
     Recargas_prevision.monto_mes_actual +
     Recargas_daily_average *
@@ -53,13 +50,12 @@ const VTR_gauges = () => {
     SIMS_prevision.monto_mes_actual +
     SIMS_daily_average * daysRemaining * (1 + SIMS_prevision.variacion / 100);
 
-  // Definir el valor máximo para el gauge
   const Recargas_maxValue = Recargas_projected_total;
   const SIMS_maxValue = SIMS_projected_total;
 
   return (
-    <div>
-      <div style={{ Height: "400px", width: "400px", justifySelf: "center" }}>
+    <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
+      <div style={{ height: "400px", width: "400px", textAlign: "center" }}>
         <GaugeComponent
           type="semicircle"
           minValue={0}
@@ -69,7 +65,7 @@ const VTR_gauges = () => {
             emptyColor: "#747475",
             width: 0.35,
             padding: 0.02,
-            colorArray: ["#2ff465", "#747475"],
+            colorArray: ["#2ff465", "#16adf1","#747475"],
             subArcs: [
               {
                 limit: SIMS_prevision.monto_mes_pasado,
@@ -110,9 +106,12 @@ const VTR_gauges = () => {
             },
           }}
         />
+        <h4 style={{ fontSize: "16px", fontWeight: "bold", marginTop: "10px" }}>
+          Previsión de SIMS
+        </h4>
       </div>
 
-      <div style={{ Height: "400px", width: "400px", justifySelf: "center" }}>
+      <div style={{ height: "400px", width: "400px", textAlign: "center" }}>
         <GaugeComponent
           type="semicircle"
           minValue={0}
@@ -122,7 +121,7 @@ const VTR_gauges = () => {
             emptyColor: "#747475",
             width: 0.35,
             padding: 0.02,
-            colorArray: ["#2ff465", "#747475"],
+            colorArray: ["#16adf1","#2ff465", "#747475"],
             subArcs: [
               {
                 limit: Recargas_prevision.monto_mes_actual,
@@ -162,6 +161,9 @@ const VTR_gauges = () => {
             },
           }}
         />
+        <h4 style={{ fontSize: "16px", fontWeight: "bold", marginTop: "10px" }}>
+          Previsión de Recargas
+        </h4>
       </div>
     </div>
   );
