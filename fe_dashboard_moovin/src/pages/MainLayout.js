@@ -24,7 +24,7 @@ const MainLayout = ({ children }) => {
                 <span className="tab" onClick={() => navigateTo("/PDV_page")}>
                     Puntos de Venta
                 </span>
-                <span className="tab" onClick={() => navigateTo("/customer_activity")}>
+                <span className="tab" onClick={() => navigateTo("/AC_dashboard_page")}>
                     Actividad de Clientes
                 </span>
             </div>

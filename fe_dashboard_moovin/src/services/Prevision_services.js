@@ -14,7 +14,7 @@ export const getRecargasData = async () => {
 
 export const getSimsData = async () => {
     try {
-        const response = await axios.get('http://127.0.0.1:8000/VTR_prevision_sims');
+        const response = await axios.get('http://127.0.0.1:8000/VTR_prevision_SIMS');
         const data = response.data?.prevision_sims?.[0]?.monto_mes_actual;
 
         return data !== undefined ? data : 0;

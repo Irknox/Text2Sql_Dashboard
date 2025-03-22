@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as echarts from "echarts";
 import AC_Services from "../services/AC_services";
 
 const AC_active_users_weekly = () => {
   const [prepayData, setPrepayData] = useState([]);
   const [postpayData, setPostpayData] = useState([]);
+
+  const chartRef = useRef(null); // Declarar la referencia aquí
 
   useEffect(() => {
     AC_Services.get_prepay_active_weekly()
@@ -14,7 +16,6 @@ const AC_active_users_weekly = () => {
       .catch((error) => {
         console.log("Error obteniendo datos de prepagos:", error);
       });
-
 
     AC_Services.get_postpay_active_weekly()
       .then((response) => {
@@ -28,19 +29,18 @@ const AC_active_users_weekly = () => {
   useEffect(() => {
     if (prepayData.length === 0 || postpayData.length === 0) return;
 
-    const chartDom = document.getElementById("main");
-    const myChart = echarts.init(chartDom);
+    const chartDom = chartRef.current; // Usar ref para acceder al contenedor
+    if (!chartDom) return;  // Verificar si el contenedor existe
+
+    const myChart = echarts.init(chartDom); // Inicializamos el gráfico aquí
 
     const xAxisData = prepayData.map((item) => `Semana ${item.semana}`);
-
-
     const prepayValues = prepayData.map((item) => item.cantidad);
     const postpayValues = postpayData.map((item) => item.cantidad);
 
-
     const option = {
       title: {
-        text: "Usuarios Activos ultimos 2 meses",
+        text: "Usuarios Activos últimos 2 meses",
         left: "center",
       },
       tooltip: {
@@ -59,7 +59,7 @@ const AC_active_users_weekly = () => {
       },
       xAxis: {
         type: "category",
-        data: xAxisData, // Horas del día
+        data: xAxisData,
         splitLine: { show: false },
       },
       yAxis: {
@@ -70,7 +70,7 @@ const AC_active_users_weekly = () => {
         {
           name: "Usuarios Prepago",
           type: "bar",
-          data: prepayValues, // Datos de prepagos
+          data: prepayValues,
           emphasis: {
             focus: "series",
           },
@@ -82,7 +82,7 @@ const AC_active_users_weekly = () => {
         {
           name: "Usuarios Postpago",
           type: "bar",
-          data: postpayValues, // Datos de postpagos
+          data: postpayValues,
           emphasis: {
             focus: "series",
           },
@@ -98,13 +98,12 @@ const AC_active_users_weekly = () => {
 
     myChart.setOption(option);
 
-    // Limpiar el gráfico al desmontar el componente
     return () => {
       myChart.dispose();
     };
-  }, [prepayData, postpayData]); // Actualizar gráfico cuando cambien los datos
+  }, [prepayData, postpayData]);
 
-  return <div id="main" style={{ width: "100%", height: "400px" }}></div>;
+  return <div ref={chartRef} style={{ width: "100%", height: "500px" }}></div>;
 };
 
 export default AC_active_users_weekly;

@@ -1,9 +1,10 @@
 import * as echarts from "echarts";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import AC_Services from "@/services/AC_services";
 
 const AC_provinces_postpay_weekly = () => {
   const [AC_provinces_data, setAC_provinces_data] = useState([]);
+  const chartRef = useRef(null); // Declarar la referencia aquí
 
   useEffect(() => {
     AC_Services.get_province_postpay_active_weekly()
@@ -11,13 +12,16 @@ const AC_provinces_postpay_weekly = () => {
         setAC_provinces_data(response.postpago_activos_semanal_provincia);
       })
       .catch((error) => {
-        console.log("Error obteniendo datos de prepagos por provincia:", error);
+        console.log("Error obteniendo datos de postpagos por provincia:", error);
       });
   }, []);
 
   useEffect(() => {
-    var chartDom = document.getElementById("main");
-    var myChart = echarts.init(chartDom);
+    const chartDom = chartRef.current; // Usar ref para acceder al contenedor
+    if (!chartDom) return;  // Verificar si el contenedor existe
+
+    const myChart = echarts.init(chartDom); // Inicializamos el gráfico aquí
+
     var option;
 
     const semanas = Array.from({ length: 17 }, (_, i) => `Semana ${i + 1}`);
@@ -72,7 +76,7 @@ const AC_provinces_postpay_weekly = () => {
           type: "value",
           name: "Usuarios",
           min: 0,
-          max: 4000000, 
+          max: 4000000,
           interval: 500000,
           axisLabel: {
             formatter: "{value}",
@@ -181,7 +185,7 @@ const AC_provinces_postpay_weekly = () => {
     };
   }, [AC_provinces_data]);
 
-  return <div id="main" style={{ width: "100%", height: "400px" }}></div>;
+  return <div ref={chartRef} style={{ width: "100%", height: "500px" }}></div>;
 };
 
 export default AC_provinces_postpay_weekly;

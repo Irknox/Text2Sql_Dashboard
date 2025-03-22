@@ -1,9 +1,11 @@
 import * as echarts from "echarts";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import AC_Services from "@/services/AC_services";
 
 const AC_provinces_prepay_weekly = () => {
   const [AC_provinces_data, setAC_provinces_data] = useState([]);
+
+  const chartRef = useRef(null);
 
   useEffect(() => {
     AC_Services.get_province_prepay_active_weekly()
@@ -16,13 +18,13 @@ const AC_provinces_prepay_weekly = () => {
   }, []);
 
   useEffect(() => {
-    var chartDom = document.getElementById("main");
-    var myChart = echarts.init(chartDom);
-    var option;
+    const chartDom = chartRef.current; // Usar ref para acceder al contenedor
+    if (!chartDom) return;  // Verificar si el contenedor existe
 
+    const myChart = echarts.init(chartDom); // Inicializar el gráfico con echarts.init
     const semanas = Array.from({ length: 17 }, (_, i) => `Semana ${i + 1}`);
 
-    option = {
+    const option = {
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -181,7 +183,7 @@ const AC_provinces_prepay_weekly = () => {
     };
   }, [AC_provinces_data]);
 
-  return <div id="main" style={{ width: "100%", height: "400px" }}></div>;
+  return <div ref={chartRef} style={{ width: "100%", height: "500px" }}></div>;
 };
 
 export default AC_provinces_prepay_weekly;

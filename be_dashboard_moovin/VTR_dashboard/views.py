@@ -97,6 +97,18 @@ def VTR_sales_by_hour(request):
     else:
         return JsonResponse({"error": "Método no permitido"}, status=405)
     
+def VTR_recarga_by_hour(request):
+    if request.method == 'GET':
+        try:
+            response = get_category("ventas_recargas_por_hora")
+            return response
+        except Exception as e:
+            print(f"Error: {e}")
+            return JsonResponse({"error": str(e)}, status=500)
+    else:
+        return JsonResponse({"error": "Método no permitido"}, status=405)
+    
+    
 def VTR_sims_by_hour(request):
     if request.method == 'GET':
         try:
