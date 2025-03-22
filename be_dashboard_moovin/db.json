@@ -73,6 +73,29 @@
         "monto_mes_actual": 6283,
         "variacion": 13.00
     }
+    
+  ],
+  "ventas_recargas_por_hora":[
+
+    {"hora": 4, "Ventas": 25066.0},
+    {"hora": 5, "Ventas": 31324.0},
+    {"hora": 6, "Ventas": 15356.0},
+    {"hora": 8, "Ventas": 12267.0},
+    {"hora": 9, "Ventas": 2500.0},
+    {"hora": 10, "Ventas": 11989.0},
+    {"hora": 11, "Ventas": 41620.0},
+    {"hora": 12, "Ventas": 140443.0},
+    {"hora": 13, "Ventas": 393544.0},
+    {"hora": 14, "Ventas": 686419.0},
+    {"hora": 15, "Ventas": 986354.0},
+    {"hora": 16, "Ventas": 1315886.0},
+    {"hora": 17, "Ventas": 1108480.0},
+    {"hora": 18, "Ventas": 1062506.0},
+    {"hora": 19, "Ventas": 1096804.0},
+    {"hora": 20, "Ventas": 1061997.0},
+    {"hora": 21, "Ventas": 1215804.0},
+    {"hora": 22, "Ventas": 1291024.0},
+    {"hora": 23, "Ventas": 1291810.0}
   ],
   "ventas_sims_por_hora":[
     {
