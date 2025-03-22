@@ -34,9 +34,6 @@ const AC_active_users_weekly = () => {
 
     const xAxisData = prepayData.map((item) => `Semana ${item.semana}`);
 
-    const myChart = echarts.init(chartDom); // Inicializamos el gráfico aquí
-
-    const xAxisData = prepayData.map((item) => `Semana ${item.semana}`);
     const prepayValues = prepayData.map((item) => item.cantidad);
     const postpayValues = postpayData.map((item) => item.cantidad);
 

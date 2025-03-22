@@ -3,9 +3,9 @@ import MainLayout from "../pages/MainLayout";
 import SGPV_cards from "@/components/SGPV_cards";
 import VP_component from "@/components/VP_component";
 import SPA_component from "@/components/SPA_component";
-import PS_component from "@/components/PS_component";
 import VSH_componente from "@/components/VSH_componente";
 import RPH_componente from "@/components/RPH_componente";
+import VTR_gauges from "@/components/VTR_gauges";
 
 export default function VT_page() {
     return (
@@ -21,7 +21,7 @@ export default function VT_page() {
                     <SPA_component />
                 </div>
                 <div className="grid-item">
-                    <PS_component />
+                    <VTR_gauges />
                 </div>
                 <div className="grid-item">
                     <VSH_componente />
