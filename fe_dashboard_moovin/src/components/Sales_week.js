@@ -50,17 +50,17 @@ const Sales_week = () => {
             type: "value",
             name: "Ventas ultimos 2 años",
             axisLabel: {
-              formatter: "{value}"
+              formatter: (value) => value.toLocaleString("de-DE")
             }
           }
         ],
         series: chartData.series.map((serie) => ({
           name: serie.name,
           type: "bar",
-          data: serie.data,
+          data: serie.data.map((value) => value.toLocaleString("de-DE")),
           tooltip: {
             valueFormatter: function (value) {
-              return "₡"+ value;
+              return "₡" + value.toLocaleString("de-DE");
             }
           }
         }))

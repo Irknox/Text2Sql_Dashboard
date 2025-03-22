@@ -29,7 +29,11 @@ const VP_component = () => {
         },
         tooltip: {
             trigger: 'item',
-            formatter: '{b}: {c} ({d}%)'
+            formatter: (params) => {
+                // Formatear el valor con puntos y comas en el tooltip😎
+                const formattedValue = params.value.toLocaleString("es-ES");
+                return `${params.name}: ${formattedValue} (${params.percent.toFixed(2)}%)`;
+            }
         },
         legend: {
             orient: 'vertical',
@@ -47,12 +51,13 @@ const VP_component = () => {
                     borderRadius: 5
                 },
                 data: data.map(item => ({
-                    value: item.monto,
+                    value: Number(item.monto) || 0, // Mantener el valor como número
                     name: item.provincia
                 }))
             }
         ]
     };
+    
 
     if (loading) return <Typography>Cargando datos...</Typography>;
     if (error) return <Typography>Error al cargar datos: {error}</Typography>;

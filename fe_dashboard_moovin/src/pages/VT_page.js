@@ -11,7 +11,7 @@ import { Box } from "@mui/material";
 export default function VT_page() {
     return (
         <MainLayout>
-            <Box sx={{ width: '75%', height: '400px', justifyItems:"center", 
+            <Box sx={{ width: '75%', height: '350px', justifyItems:"center", 
                        alignItems:"center", marginRight: 'auto', marginLeft: 'auto' }}>
                 <SGPV_cards />
             </Box>
