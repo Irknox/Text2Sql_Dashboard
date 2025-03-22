@@ -3,21 +3,29 @@ import MainLayout from "../pages/MainLayout";
 import LastSixMonthsSalesChart from "@/components/Last_six_months_sales_chart";
 import PDV_cards_data_component from "@/components/PDV_cards_data_component";
 import Sales_week from "@/components/Sales_week";
+import { Box } from "@mui/material"; 
 
 export default function PDVPage() {
     return (
         <MainLayout>
-            <div className="grid-container">
-                <div className="grid-item">
-                    <PDV_cards_data_component />
-                </div>
-                <div className="grid-item">
-                    <LastSixMonthsSalesChart />
-                </div>
-                <div className="grid-item">
-                    <Sales_week />
-                </div>
-            </div>
-        </MainLayout>
+        <Box
+            display="grid"
+            gridTemplateColumns="repeat(1, 1fr, 1fr)" 
+            justifyItems="center" 
+            alignItems="center"  
+            sx={{ width: '100%', margin: '0 auto' }} 
+        >
+            <Box sx={{ width: '100%', height: '600px' }}>
+              <PDV_cards_data_component />
+            </Box>
+            <Box sx={{ width: '50%', height: '500px' }}>
+              <LastSixMonthsSalesChart />
+            </Box>
+            <Box sx={{ width: '50%', height: '500px' }}>
+               <Sales_week />
+            </Box>
+        </Box>
+    </MainLayout>
+        
     );
 }
