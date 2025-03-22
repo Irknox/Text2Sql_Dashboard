@@ -57,11 +57,26 @@ const PDV_cards_data_component = () => {
 
   // Tarjetas que se mostrarán
   const cards = [
-    { id: 1, title: "Saldo actual", monto: "" + balance_data , icon: <Home size={24} /> },
-    { id: 2, title: "Variación mes anterior", description: variation_card_description(), icon: <ChartNoAxesCombined size={24} /> },
-    { id: 3, title: "Monto Vendido", description: "" + current_sales_data , icon: <CreditCard size={24} /> },
+    { 
+      id: 1, 
+      title: "Saldo actual", 
+      monto: (balance_data || 0).toLocaleString('es-ES'), 
+      icon: <Home size={24} /> 
+    },
+    { 
+      id: 2, 
+      title: "Variación mes anterior", 
+      description: variation_card_description(), 
+      icon: <ChartNoAxesCombined size={24} /> 
+    },
+    { 
+      id: 3, 
+      title: "Monto Vendido", 
+      description: (current_sales_data || 0).toLocaleString('es-ES'), 
+      icon: <CreditCard size={24} /> 
+    },
   ];
-
+  
   return (
     <div className="pdv_cards_containter">
   
@@ -82,10 +97,13 @@ const PDV_cards_data_component = () => {
             <Card
               key={card.id}
               sx={{
+                width: '250px',  
+                height: '100px',
                 padding: 2,
-                boxShadow: '4px 6px 8px rgba(0, 0, 0, 0.51)',
-                backgroundColor: '#ddeae1',
+                boxShadow: '3px 5px 7px rgba(8, 160, 160, 0.4)',
+                backgroundColor:'rgb(255, 255, 255)',
                 borderRadius: '10px',
+                border: '1px solid rgba(99, 96, 96, 0.62)',
                 display: 'flex',
                 alignItems: 'center', 
                 justifyContent: 'center',
@@ -109,10 +127,10 @@ const PDV_cards_data_component = () => {
                     {card.icon}
                   </Box>
                   <div>
-                    <Typography variant="h6" sx={{ color: '#031B4A', fontWeight: 'bold' }}>
+                    <Typography variant="h6" sx={{ color: '#031B4A', fontWeight: 'bold',  fontSize: '15px' }}>
                       {card.title}
                     </Typography>
-                    <Typography variant="h4" sx={{ color: '#31c3bc', marginTop: '10px' }}>
+                    <Typography variant="h4" sx={{ color: '#31c3bc', marginTop: '8px', textAlign: 'left'}}>
                       {card.monto || card.description}
                     </Typography>
                   </div>

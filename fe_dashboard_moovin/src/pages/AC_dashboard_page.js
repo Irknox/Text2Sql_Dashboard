@@ -11,7 +11,7 @@ export default function PDVPage() {
     return (
         <MainLayout>
             
-            <Box sx={{ width: '80%', height: '500px', justifyItems:"center", 
+            <Box sx={{ width: '75%', height: '200px', justifyItems:"center", 
                        alignItems:"center", marginRight: 'auto', marginLeft: 'auto' }}>
                     <AC_users_cards/>
             </Box>
