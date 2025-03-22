@@ -10,25 +10,28 @@ import { Box } from "@mui/material";
 export default function PDVPage() {
     return (
         <MainLayout>
+            
+            <Box sx={{ width: '80%', height: '500px', justifyItems:"center", 
+                       alignItems:"center", marginRight: 'auto', marginLeft: 'auto' }}>
+                    <AC_users_cards/>
+            </Box>
+
             <Box
                 display="grid"
-                gridTemplateColumns="repeat(4, 1fr, 1)" 
-                gap={2}
-                justifyItems="center" 
-                alignItems="center"  
-                sx={{ width: '100%', margin: '0 auto' }} 
+                gridTemplateColumns="repeat(2, 1fr)" // Dos columnas para un mejor ajuste
+                gap={3}
+                justifyItems="center"
+                alignItems="center"
+                sx={{ width: '100%', margin: '0 auto' }}
             >
-                <Box sx={{ width: '80%', height: '500px' }}>
-                <AC_users_cards/>
-                </Box>
                 <Box sx={{ width: '50%', height: '500px' }}>
-                <AC_active_users_weekly />
+                <AC_provinces_prepay_weekly />
                 </Box>
                 <Box sx={{ width: '50%', height: '500px' }}>
                 <AC_provinces_postpay_weekly />
                 </Box>
                 <Box sx={{ width: '80%', height: '500px' }}>
-                <AC_provinces_prepay_weekly />
+                  <AC_active_users_weekly />
                 </Box>
             </Box>
         </MainLayout>

@@ -38,15 +38,16 @@ const MainLayout = ({ children }) => {
                     padding: '10px',
                     borderRadius: '10px',
                     boxShadow: '0px 4px 12px rgba(7, 209, 149, 0.31)',
-                    width: '80%'
+                    width: '80%',
+                    height: '40px'
                 }}>
-                    <span className="tab" onClick={() => navigateTo('/VT_page')} style={{  cursor: 'pointer', fontWeight: 'bold', color: '#031B4A' }}>
+                    <span className="tab" onClick={() => navigateTo('/VT_page')} style={{  cursor: 'pointer', fontWeight: 'bold', color: '#031B4A', fontSize: '1.2rem'}}>
                         Ventas en Tiempo Real
                     </span>
-                    <span className="tab" onClick={() => navigateTo('/PDV_page')} style={{ cursor: 'pointer', fontWeight: 'bold', color: '#031B4A' }}>
+                    <span className="tab" onClick={() => navigateTo('/PDV_page')} style={{ cursor: 'pointer', fontWeight: 'bold', color: '#031B4A', fontSize: '1.2rem'}}>
                         Puntos de Venta
                     </span>
-                    <span className="tab" onClick={() => navigateTo('/AC_dashboard_page')} style={{ cursor: 'pointer', fontWeight: 'bold', color: '#031B4A' }}>
+                    <span className="tab" onClick={() => navigateTo('/AC_dashboard_page')} style={{ cursor: 'pointer', fontWeight: 'bold', color: '#031B4A', fontSize: '1.2rem' }}>
                         Actividad de Clientes
                     </span>
                 </div>

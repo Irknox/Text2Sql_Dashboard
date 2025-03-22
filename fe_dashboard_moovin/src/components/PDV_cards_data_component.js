@@ -73,8 +73,8 @@ const PDV_cards_data_component = () => {
       
         <Box
         display="flex"
-        justifyContent="center" // Centrado horizontal
-        alignItems="center" // Centrado vertical
+        justifyContent="center" 
+        alignItems="center" 
         gap={6}
         sx={{ marginBottom: '20px' }}
         >
