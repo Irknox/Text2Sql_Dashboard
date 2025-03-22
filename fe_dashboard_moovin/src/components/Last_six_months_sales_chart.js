@@ -19,7 +19,6 @@ const LastSixMonthsSalesChart = () => {
       // Gráfico de ventas
       const salesChart = echarts.init(document.getElementById("salesChart"));
       const salesOptions = {
-        backgroundColor: "#e0f2f1",
         tooltip: {
           trigger: "axis",
         },
@@ -52,7 +51,6 @@ const LastSixMonthsSalesChart = () => {
       // Gráfico de montos en colones
       const amountChart = echarts.init(document.getElementById("amountChart"));
       const amountOptions = {
-        backgroundColor: "#e0f2f1",
         tooltip: {
           trigger: "axis",
         },
@@ -79,11 +77,30 @@ const LastSixMonthsSalesChart = () => {
   }, [chartData]);
 
   return (
-    <div className="first_dashboard_container" style={{ backgroundColor: "#e0f2f1", padding: "20px", borderRadius: "12px" }}>
-      <h1 style={{ color: "#004d40", textAlign: "center", marginBottom: "20px" }}>Reporte de Ventas - Últimos 6 Meses</h1>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <div id="salesChart" style={{ flex: 1, height: "400px" }}></div>
-        <div id="amountChart" style={{ flex: 1, height: "400px" }}></div>
+    <div
+      style={{
+        backgroundColor: "white",
+        borderRadius: "10px",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        width: "80%",
+        justifySelf: "center",
+        height:"100%"
+      }}
+    >
+      <h1
+        style={{
+          color: "#004d40",
+          textAlign: "center",
+          marginBottom: "20px",
+          fontFamily: "system-ui",
+          color: "#302e2e",
+        }}
+      >
+        Reporte de Ventas - Últimos 6 Meses
+      </h1>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width:"100%",height:"90%"}}>
+        <div id="salesChart" style={{ width: "100%", height: "100%",display:"flex",justifySelf:"center" }}></div>
+        <div id="amountChart" style={{ width: "100%", height: "100%" }}></div>
       </div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
