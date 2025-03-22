@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
 import VTR_Services from "@/services/VTR_services";
+import { red } from "@mui/material/colors";
+import RectangleIcon from "@mui/icons-material/Rectangle";
 
 const VTR_gauges = () => {
   const [SIMS_prevision, setSIMS_prevision] = useState(null);
@@ -54,8 +56,28 @@ const VTR_gauges = () => {
   const SIMS_maxValue = SIMS_projected_total;
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center" }}>
-      <div style={{ height: "400px", width: "400px", textAlign: "center" }}>
+    <div>
+      <div
+        style={{
+          width: "70%",
+          margin: "50px",
+          backgroundColor: "#f4f4f4",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+          justifySelf: "center",
+        }}
+      >
+        <h3
+          style={{
+            height: "30px",
+            alignContent: "center",
+            textAlign: "center",
+            fontFamily: "system-ui",
+            color: "#302e2e",
+          }}
+        >
+          Prevision SIMS fin de mes.
+        </h3>
         <GaugeComponent
           type="semicircle"
           minValue={0}
@@ -65,7 +87,7 @@ const VTR_gauges = () => {
             emptyColor: "#747475",
             width: 0.35,
             padding: 0.02,
-            colorArray: ["#2ff465", "#16adf1","#747475"],
+            colorArray: ["#16adf1", "#2ff465", "#747475"],
             subArcs: [
               {
                 limit: SIMS_prevision.monto_mes_pasado,
@@ -75,6 +97,7 @@ const VTR_gauges = () => {
               {
                 limit: SIMS_prevision.monto_mes_actual,
                 showTick: true,
+                color: red,
                 tooltip: { text: "Monto actual" },
               },
 
@@ -106,12 +129,53 @@ const VTR_gauges = () => {
             },
           }}
         />
-        <h4 style={{ fontSize: "16px", fontWeight: "bold", marginTop: "10px" }}>
-          Previsión de SIMS
-        </h4>
+        <div
+          style={{
+            alignContent: "center",
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "center",
+            justifyContent:"space-evenly"
+          }}
+        >
+          <p style={{ fontSize: "15px", fontFamily: "system-ui" }}>
+            Monto mes pasado
+          </p>
+          <RectangleIcon style={{ alignSelf: "center", color: "#16adf1" }} />
+          <p
+            style={{
+              display: "flex",
+              alignContent: "center",
+              fontSize: "15px",
+              fontFamily: "system-ui"
+            }}
+          >
+            Monto mes actual
+          </p>
+          <RectangleIcon style={{ alignSelf: "center", color: "#2ff465" }} />
+        </div>
       </div>
 
-      <div style={{ height: "400px", width: "400px", textAlign: "center" }}>
+      <div style={{
+          width: "70%",
+          margin: "50px",
+          backgroundColor: "#f4f4f4",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+          justifySelf: "center",
+        }}
+      >
+        <h3
+          style={{
+            height: "30px",
+            alignContent: "center",
+            textAlign: "center",
+            fontFamily: "system-ui",
+            color: "#302e2e",
+          }}
+        >
+          Prevision recargas fin de mes.
+        </h3>
         <GaugeComponent
           type="semicircle"
           minValue={0}
@@ -121,7 +185,7 @@ const VTR_gauges = () => {
             emptyColor: "#747475",
             width: 0.35,
             padding: 0.02,
-            colorArray: ["#16adf1","#2ff465", "#747475"],
+            colorArray: ["#2ff465", "#16adf1", "#747475"],
             subArcs: [
               {
                 limit: Recargas_prevision.monto_mes_actual,
@@ -161,9 +225,31 @@ const VTR_gauges = () => {
             },
           }}
         />
-        <h4 style={{ fontSize: "16px", fontWeight: "bold", marginTop: "10px" }}>
-          Previsión de Recargas
-        </h4>
+        <div
+          style={{
+            alignContent: "center",
+            display: "flex",
+            flexDirection: "row",
+            alignContent: "center",
+            justifyContent:"space-evenly"
+          }}
+        >
+          <p style={{ fontSize: "15px", fontFamily: "system-ui" }}>
+            Monto mes pasado
+          </p>
+          <RectangleIcon style={{ alignSelf: "center", color: "#16adf1" }} />
+          <p
+            style={{
+              display: "flex",
+              alignContent: "center",
+              fontSize: "15px",
+              fontFamily: "system-ui"
+            }}
+          >
+            Monto mes actual
+          </p>
+          <RectangleIcon style={{ alignSelf: "center", color: "#2ff465" }} />
+        </div>
       </div>
     </div>
   );

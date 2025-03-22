@@ -62,7 +62,7 @@ def get_sales_last_month():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         raise
-    
+
     
 def get_sales_per_hour():
     try:

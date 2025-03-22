@@ -41,7 +41,18 @@ const VSH_componente = () => {
   };
 
   return (
-    <div style={{ width: '100%', height: '600' }}>
+    <div
+    style={{
+      width: "100%",
+      height: "70%",
+      backgroundColor: "#f4f4f4",
+      borderRadius: "10px",
+      boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+      justifySelf: "right",
+      marginTop:"50px",
+      alignContent:"center"
+    }}
+    >
       <ReactECharts option={options} />
     </div>
   );
