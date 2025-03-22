@@ -19,9 +19,6 @@ const AC_provinces_prepay_weekly = () => {
 
   useEffect(() => {
     var chartDom = document.getElementById("AC_provinces_prepay_weekly");
-    var myChart = echarts.init(chartDom);
-    var option;
-
     const myChart = echarts.init(chartDom); // Inicializar el gráfico con echarts.init
     const semanas = Array.from({ length: 17 }, (_, i) => `Semana ${i + 1}`);
 

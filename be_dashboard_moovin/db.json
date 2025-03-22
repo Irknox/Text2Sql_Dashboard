@@ -67,14 +67,21 @@
     { "provincia": "Puntarenas", "vendidas": 129, "activadas": 43 },
     { "provincia": "Limón", "vendidas": 117, "activadas": 37 }
   ],
-  "prevision_sims": [
+ "prevision_sims":  [
     {
       "total_mes_pasado": 24254,
       "monto_mes_pasado": 5562,
       "monto_mes_actual": 6283,
       "variacion": 13.0
     }
-    
+  ],
+  "prevision_recargas": [
+    {
+      "total_mes_pasado": 463280119,
+      "monto_mes_pasado": 125599727,
+      "monto_mes_actual": 102677308,
+      "variacion": -18.25
+    }
   ],
   "ventas_recargas_por_hora":[
 
@@ -97,14 +104,6 @@
     {"hora": 21, "Ventas": 1215804.0},
     {"hora": 22, "Ventas": 1291024.0},
     {"hora": 23, "Ventas": 1291810.0}
-  ],
-  "prevision_recargas": [
-    {
-      "total_mes_pasado": 463280119,
-      "monto_mes_pasado": 125599727,
-      "monto_mes_actual": 102677308,
-      "variacion": -18.25
-    }
   ],
   "ventas_sims_por_hora": [
     {

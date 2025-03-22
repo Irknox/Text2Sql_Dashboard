@@ -45,6 +45,8 @@ def VTR_province_sims_data(request):
 def VTR_prevision_recargas(request):
     if request.method == 'GET':
         try:
+            response = get_category("prevision_recargas")
+            return response
 
            ## response_current_month = get_sales_current_month()
            ## sales_last_month = get_sales_last_month()
@@ -72,7 +74,7 @@ def VTR_prevision_recargas(request):
             print(f"Error: {e}")
             return JsonResponse({"error": str(e)}, status=500)
     else:
-        return JsonResponse({"error": "Método no permitido"}, status=405)
+        return JsonResponse({"error": "Método no permitido"}, status=405) 
 
 
 
