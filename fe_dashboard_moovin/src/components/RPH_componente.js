@@ -52,7 +52,7 @@ const RPH_componente = () => {
         }
     }, [data]);
 
-    return <div id="chart" style={{ width: '100%', height: '400px' }} />;
+    return <div id="chart" style={{ width: '80%', height: '500px' }} />;
 };
 
 export default RPH_componente;

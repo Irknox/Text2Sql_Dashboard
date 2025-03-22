@@ -11,7 +11,7 @@ import CardActionArea from "@mui/material/CardActionArea";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import RemoveIcon from '@mui/icons-material/Remove';
-
+import { Home, CreditCard, ChartNoAxesCombined } from "lucide-react"; 
 
 const PDV_cards_data_component = () => {
   const dispatch = useDispatch();
@@ -57,23 +57,40 @@ const PDV_cards_data_component = () => {
 
   // Tarjetas que se mostrarán
   const cards = [
-    { id: 1, title: "Balance en venta", monto: "₡" + balance_data },
-    { id: 2, title: "Variación mes anterior", description: variation_card_description() },
-    { id: 3, title: "Monto Vendido", description: "₡" + current_sales_data },
+    { id: 1, title: "Saldo actual", monto: "" + balance_data , icon: <Home size={24} /> },
+    { id: 2, title: "Variación mes anterior", description: variation_card_description(), icon: <ChartNoAxesCombined size={24} /> },
+    { id: 3, title: "Monto Vendido", description: "" + current_sales_data , icon: <CreditCard size={24} /> },
   ];
 
   return (
     <div className="pdv_cards_containter">
-      {/* Mostrar mensaje si aún no hay datos */}
+  
       {balance_status === "loading" || variation_status === "loading" ? (
         <p>Cargando datos...</p>
       ) : balance_status === "failed" || variation_status === "failed" ? (
         <p>Error al cargar los datos.</p>
       ) : (
-        // Mostrar las tarjetas solo si ambos datos están listos
-        <Box className="pdv_card_box">
+      
+        <Box
+        display="flex"
+        justifyContent="center" // Centrado horizontal
+        alignItems="center" // Centrado vertical
+        gap={6}
+        sx={{ marginBottom: '20px' }}
+        >
           {cards.map((card, index) => (
-            <Card key={card.id} className="pdv_card">
+            <Card
+              key={card.id}
+              sx={{
+                padding: 2,
+                boxShadow: '4px 6px 8px rgba(0, 0, 0, 0.51)',
+                backgroundColor: '#ddeae1',
+                borderRadius: '10px',
+                display: 'flex',
+                alignItems: 'center', 
+                justifyContent: 'center',
+              }}
+            >
               <CardActionArea
                 onClick={() => setSelectedCard(index)}
                 data-active={selectedCard === index ? "" : undefined}
@@ -87,13 +104,18 @@ const PDV_cards_data_component = () => {
                   },
                 }}
               >
-                <CardContent className="card_content" sx={{ height: "90%" }}>
-                  <Typography variant="h5" component="div">
-                    {card.title}
-                  </Typography>
-                  <Typography id="card_data" variant="h4" color="text.secondary">
-                    {card.monto || card.description}
-                  </Typography>
+                <CardContent sx={{ display: 'flex', alignItems: 'right' }}>
+                  <Box sx={{ marginRight: 2 }}>
+                    {card.icon}
+                  </Box>
+                  <div>
+                    <Typography variant="h6" sx={{ color: '#031B4A', fontWeight: 'bold' }}>
+                      {card.title}
+                    </Typography>
+                    <Typography variant="h4" sx={{ color: '#31c3bc', marginTop: '10px' }}>
+                      {card.monto || card.description}
+                    </Typography>
+                  </div>
                 </CardContent>
               </CardActionArea>
             </Card>

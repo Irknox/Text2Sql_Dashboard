@@ -1,9 +1,17 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useRouter } from 'next/router';
 
 const Navbar = () => (
-    <div className="navbar">
-        <h1>kölbi Control Tower ⭐</h1>
+    <div className="navbar" style={{
+        backgroundColor: '#0cb4ac',
+        padding: '10px 20px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        color: '#fff',
+        boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.34)'
+    }}>
+        <h1 style={{ fontSize: '1.8rem', fontWeight: 'bold', margin: 0 }}>kölbi Control Tower ⭐</h1>
     </div>
 );
 
@@ -15,20 +23,35 @@ const MainLayout = ({ children }) => {
     };
 
     return (
-        <div className="dashboard-container">
+        <div style={{ backgroundColor: '#ddeae1', minHeight: '100vh', padding: '20px' }}>
             <Navbar />
-            <div className="dashboard-tabs">
-                <span className="tab" onClick={() => navigateTo("/VT_page")}>
-                    Ventas en Tiempo Real
-                </span>
-                <span className="tab" onClick={() => navigateTo("/PDV_page")}>
-                    Puntos de Venta
-                </span>
-                <span className="tab" onClick={() => navigateTo("/AC_dashboard_page")}>
-                    Actividad de Clientes
-                </span>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '20px'
+            }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'center',
+                    backgroundColor: '#fff',
+                    padding: '10px',
+                    borderRadius: '10px',
+                    boxShadow: '0px 4px 12px rgba(7, 209, 149, 0.31)',
+                    width: '80%'
+                }}>
+                    <span className="tab" onClick={() => navigateTo('/VT_page')} style={{  cursor: 'pointer', fontWeight: 'bold', color: '#031B4A' }}>
+                        Ventas en Tiempo Real
+                    </span>
+                    <span className="tab" onClick={() => navigateTo('/PDV_page')} style={{ cursor: 'pointer', fontWeight: 'bold', color: '#031B4A' }}>
+                        Puntos de Venta
+                    </span>
+                    <span className="tab" onClick={() => navigateTo('/AC_dashboard_page')} style={{ cursor: 'pointer', fontWeight: 'bold', color: '#031B4A' }}>
+                        Actividad de Clientes
+                    </span>
+                </div>
             </div>
-            <div className="content-area">{children}</div>
+            <div className="content-area" style={{ marginTop: '30px' }}>{children}</div>
         </div>
     );
 };
