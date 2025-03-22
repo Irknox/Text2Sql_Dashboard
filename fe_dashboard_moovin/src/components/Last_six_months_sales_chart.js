@@ -16,59 +16,74 @@ const LastSixMonthsSalesChart = () => {
 
   useEffect(() => {
     if (chartData) {
-      // Gráfico de ventas
       const salesChart = echarts.init(document.getElementById("salesChart"));
       const salesOptions = {
         tooltip: {
           trigger: "axis",
         },
+
         legend: {
           data: ["Número de Ventas"],
           top: "5%",
           left: "center",
-          textStyle: { color: "#004d40" },
+          textStyle: { color: "#008b8b" },
         },
         xAxis: {
           type: "category",
           data: chartData.legend_data,
-          axisLabel: { color: "#004d40" },
+          axisLabel: { color: "#008b8b" },
         },
         yAxis: {
           type: "value",
-          axisLabel: { color: "#004d40" },
+          axisLabel: { color: "#008b8b" },
         },
         series: [
           {
             name: "Número de Ventas",
             type: "bar",
-            data: chartData.sales_amount.map((item) => item.value),
-            itemStyle: { color: "#26a69a" },
+            data: chartData.sales_amount.map((item) => item.value.toLocaleString("de-DE")),
+            itemStyle: { color: "#40e0d0" },
           },
         ],
       };
       salesChart.setOption(salesOptions);
 
-      // Gráfico de montos en colones
       const amountChart = echarts.init(document.getElementById("amountChart"));
       const amountOptions = {
+
+        backgroundColor: "#ffffff",
+        tooltip: { trigger: "axis" },
+        legend: {
+          data: ["Total de Ventas en colones"],
+          top: "5%",
+          left: "center",
+          textStyle: { color: "#008b8b" },
+
         tooltip: {
           trigger: "axis",
+
         },
         xAxis: {
           type: "category",
           data: chartData.legend_data,
-          axisLabel: { color: "#004d40" },
+          axisLabel: { color: "#008b8b" },
         },
         yAxis: {
           type: "value",
-          axisLabel: { color: "#004d40" },
+          axisLabel: { color: "#008b8b" },
+        },
+        grid: {
+          left: "10%",
+          right: "10%",
+          bottom: "15%",
+          containLabel: true,
         },
         series: [
           {
             name: "Total de Ventas en colones",
             type: "bar",
-            data: chartData.amount_data.map((item) => item.value),
-            itemStyle: { color: "#26a69a" },
+            data: chartData.amount_data.map((item) => item.value.toLocaleString("de-DE")),
+            itemStyle: { color: "#20b2aa" },
           },
         ],
       };
@@ -85,6 +100,7 @@ const LastSixMonthsSalesChart = () => {
         width: "80%",
         justifySelf: "center",
         height:"100%"
+
       }}
     >
       <h1
@@ -94,6 +110,7 @@ const LastSixMonthsSalesChart = () => {
           marginBottom: "20px",
           fontFamily: "system-ui",
           color: "#302e2e",
+
         }}
       >
         Reporte de Ventas - Últimos 6 Meses

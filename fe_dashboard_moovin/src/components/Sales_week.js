@@ -55,11 +55,12 @@ const Sales_week = () => {
               formatter: "{value}",
             },
           },
+
         ],
         series: chartData.series.map((serie) => ({
           name: serie.name,
           type: "bar",
-          data: serie.data,
+          data: serie.data.map((value) => value.toLocaleString("de-DE")),
           tooltip: {
             valueFormatter: function (value) {
               return "₡" + value;

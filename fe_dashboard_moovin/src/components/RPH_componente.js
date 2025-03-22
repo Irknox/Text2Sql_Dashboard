@@ -34,6 +34,9 @@ const RPH_componente = () => {
         },
         yAxis: {
           type: "value",
+          axisLabel: {
+            formatter: (value) => value.toLocaleString("de-DE"),
+          },
         },
         series: [
           {
