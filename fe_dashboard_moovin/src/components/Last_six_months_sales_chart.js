@@ -50,18 +50,12 @@ const LastSixMonthsSalesChart = () => {
 
       const amountChart = echarts.init(document.getElementById("amountChart"));
       const amountOptions = {
-
-        backgroundColor: "#ffffff",
         tooltip: { trigger: "axis" },
         legend: {
           data: ["Total de Ventas en colones"],
           top: "5%",
           left: "center",
           textStyle: { color: "#008b8b" },
-
-        tooltip: {
-          trigger: "axis",
-
         },
         xAxis: {
           type: "category",
@@ -99,7 +93,7 @@ const LastSixMonthsSalesChart = () => {
         boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
         width: "80%",
         justifySelf: "center",
-        height:"100%"
+        height:"80%"
 
       }}
     >
@@ -116,7 +110,7 @@ const LastSixMonthsSalesChart = () => {
         Reporte de Ventas - Últimos 6 Meses
       </h1>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width:"100%",height:"90%"}}>
-        <div id="salesChart" style={{ width: "100%", height: "100%",display:"flex",justifySelf:"center" }}></div>
+        <div id="salesChart" style={{ width: "100%", height: "100%" }}></div>
         <div id="amountChart" style={{ width: "100%", height: "100%" }}></div>
       </div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}

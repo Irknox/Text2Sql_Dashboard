@@ -19,11 +19,11 @@ export default function PDVPage() {
           <PDV_cards_data_component />
         </Box>
       </Box>
-      <Box display="grid" gridTemplateRows="1fr 1fr" height="900px" >
-        <Box sx={{ width: "100%", height: "400px" }}>
+      <Box display="grid" gridTemplateRows="1fr 1fr" height="1200px" >
+        <Box >
           <LastSixMonthsSalesChart />
         </Box>
-        <Box sx={{ width: "100%", height: "400px" }}>
+        <Box >
           <Sales_week />
         </Box>
       </Box>
