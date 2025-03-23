@@ -80,7 +80,7 @@ def get_sales_per_hour():
             FROM 
             botacora_cliente_final
             WHERE 
-            fecha BETWEEN '2024-01-09 04:00:00' AND '2024-01-10 00:00:00'
+            fecha BETWEEN '2024-01-09 12:00:00' AND '2024-01-10 06:00:00'
             GROUP BY 
             HOUR(fecha)
             ORDER BY 

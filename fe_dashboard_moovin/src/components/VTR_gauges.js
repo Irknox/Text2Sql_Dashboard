@@ -86,7 +86,7 @@ const VTR_gauges = () => {
             color: "#302e2e",
           }}
         >
-          Prevision SIMS fin de mes.
+          Prevision SIMS fin de mes
         </h3>
         <GaugeComponent
           style={{
@@ -141,18 +141,21 @@ const VTR_gauges = () => {
                   value: SIMS_prevision.monto_mes_pasado,
                   valueConfig: {
                     formatTextValue: (value) => formatNumber(value)+ ` Mes pasado`,
+                    fontFamily:"system-ui"
                   },
                 },
                 {
                   value: SIMS_prevision.monto_mes_actual,
                   valueConfig: {
                     formatTextValue:  (value) => formatNumber(value)+ ` Mes pasado`,
+                  
                   },
                 },
                 {
                   value: SIMS_maxValue,
                   valueConfig: {
                     formatTextValue:  (value) => formatNumber(value)+` Prevision`,
+                  
                   },
                 },
                 
@@ -221,7 +224,7 @@ const VTR_gauges = () => {
             color: "#302e2e",
           }}
         >
-          Prevision recargas fin de mes.
+          Prevision recargas fin de mes
         </h3>
         <GaugeComponent
           style={{
@@ -264,7 +267,7 @@ const VTR_gauges = () => {
           labels={{
             valueLabel: {
               matchColorWithArc: true,
-              formatTextValue: (value) => `${SIMS_prevision.variacion}%`,
+              formatTextValue: (value) => `${Recargas_prevision.variacion}%`,
               style: { fontSize: "40px", textShadow: "none" },
             },
             tickLabels: {

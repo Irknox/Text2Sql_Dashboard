@@ -35,6 +35,7 @@ const Sales_week = () => {
             saveAsImage: { show: true },
           },
         },
+        
         legend: {
           data: chartData.legend.data,
         },
@@ -57,7 +58,7 @@ const Sales_week = () => {
           },
 
         ],
-        series: chartData.series.map((serie) => ({
+        series: chartData.series.map((serie,index) => ({
           name: serie.name,
           type: "bar",
           data: serie.data.map((value) => value.toLocaleString("de-DE")),
@@ -88,7 +89,7 @@ const Sales_week = () => {
       <h1 style={{ fontFamily: "system-ui", color: "#302e2e", justifySelf:"center" }}>
         Ventas Semanales
       </h1>
-      <div id="salesWeekChart" style={{ width: "100%", height: "90%" }}></div>
+      <div id="salesWeekChart" style={{ width: "100%", height: "80%" }}></div>
       {chartStatus === "loading" && <p>Cargando datos...</p>}
       {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
     </div>

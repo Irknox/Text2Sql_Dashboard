@@ -19,7 +19,7 @@ export default function PDVPage() {
           <PDV_cards_data_component />
         </Box>
       </Box>
-      <Box display="grid" gridTemplateRows="1fr 1fr" height="1200px" >
+      <Box display="grid" gridTemplateRows="1fr 1fr" height="1100px" >
         <Box >
           <LastSixMonthsSalesChart />
         </Box>
