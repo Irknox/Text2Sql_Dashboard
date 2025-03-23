@@ -107,7 +107,7 @@ const LastSixMonthsSalesChart = () => {
         border: "1px solid rgba(58, 57, 57, 0.4)",
         width: "80%",
         justifySelf: "center",
-        height: "80%",
+        height:"90%"
       }}
     >
       <h1

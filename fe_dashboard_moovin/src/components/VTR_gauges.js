@@ -136,6 +136,7 @@ const VTR_gauges = () => {
                   value: SIMS_prevision.monto_mes_pasado,
                   valueConfig: {
                     formatTextValue: (value) => formatNumber(value) + " Mes Pasado",
+
                   },
                 },
                 {

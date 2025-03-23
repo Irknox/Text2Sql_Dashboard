@@ -50,6 +50,7 @@ const Sales_week = () => {
             saveAsImage: { show: true },
           },
         },
+        
         legend: {
           data: chartData.legend.data,
           textStyle: {
@@ -85,7 +86,7 @@ const Sales_week = () => {
             },
           },
         ],
-        series: chartData.series.map((serie) => ({
+        series: chartData.series.map((serie,index) => ({
           name: serie.name,
           type: "bar",
           data: serie.data.map((value) => value.toLocaleString("de-DE")),
@@ -125,7 +126,7 @@ const Sales_week = () => {
       >
         Ventas Semanales
       </h1>
-      <div id="salesWeekChart" style={{ width: "100%", height: "90%" }}></div>
+      <div id="salesWeekChart" style={{ width: "100%", height: "80%" }}></div>
       {chartStatus === "loading" && (
         <p style={{ textAlign: "center", fontSize: "16px" }}>Cargando datos...</p>
       )}

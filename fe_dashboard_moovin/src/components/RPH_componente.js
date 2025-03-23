@@ -49,6 +49,7 @@ const RPH_componente = () => {
             fontFamily: "Arial, sans-serif",
             fontSize: 12,
           },
+=======
         },
         xAxis: {
           type: "category",
