@@ -66,12 +66,6 @@ const LastSixMonthsSalesChart = () => {
           type: "value",
           axisLabel: { color: "#008b8b" },
         },
-        grid: {
-          left: "10%",
-          right: "10%",
-          bottom: "15%",
-          containLabel: true,
-        },
         series: [
           {
             name: "Total de Ventas en colones",
@@ -93,7 +87,7 @@ const LastSixMonthsSalesChart = () => {
         boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
         width: "80%",
         justifySelf: "center",
-        height:"80%"
+        height:"90%"
 
       }}
     >
