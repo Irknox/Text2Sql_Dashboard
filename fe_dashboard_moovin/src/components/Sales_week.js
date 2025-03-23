@@ -21,6 +21,21 @@ const Sales_week = () => {
       );
 
       const salesOptions = {
+        title: {
+          text: "Ventas Semanales",
+          subtext: "Comparación de Ventas de los Últimos 2 Años",
+          left: "center",
+          textStyle: {
+            fontSize: 18,
+            fontWeight: "bold",
+            fontFamily: "'Arial', sans-serif",
+          },
+          subtextStyle: {
+            fontSize: 14,
+            fontStyle: "italic",
+            fontFamily: "'Arial', sans-serif",
+          },
+        },
         tooltip: {
           trigger: "axis",
           axisPointer: {
@@ -38,6 +53,10 @@ const Sales_week = () => {
         
         legend: {
           data: chartData.legend.data,
+          textStyle: {
+            fontSize: 14,
+            fontFamily: "'Arial', sans-serif",
+          },
         },
         xAxis: [
           {
@@ -46,17 +65,26 @@ const Sales_week = () => {
             axisPointer: {
               type: "shadow",
             },
+            axisLabel: {
+              fontSize: 12,
+              fontFamily: "'Arial', sans-serif",
+            },
           },
         ],
         yAxis: [
           {
             type: "value",
-            name: "Ventas ultimos 2 años",
+            name: "Ventas Últimos 2 Años (₡)",
+            nameTextStyle: {
+              fontSize: 14,
+              fontFamily: "'Arial', sans-serif",
+            },
             axisLabel: {
               formatter: "{value}",
+              fontSize: 12,
+              fontFamily: "'Arial', sans-serif",
             },
           },
-
         ],
         series: chartData.series.map((serie,index) => ({
           name: serie.name,
@@ -79,19 +107,34 @@ const Sales_week = () => {
       style={{
         backgroundColor: "white",
         borderRadius: "10px",
-        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        boxShadow: "0px 4px 12px rgba(39, 38, 38, 0.46)",
         width: "90%",
+        border: "1px solid rgba(56, 54, 54, 0.57)",
         justifySelf: "center",
-        justifyContent:"center",
+        justifyContent: "center",
         height: "80%",
+        padding: "20px",
       }}
     >
-      <h1 style={{ fontFamily: "system-ui", color: "#302e2e", justifySelf:"center" }}>
+      <h1
+        style={{
+          fontFamily: "Arial, sans-serif",
+          color: "#302e2e",
+          textAlign: "center",
+          fontSize: "24px",
+        }}
+      >
         Ventas Semanales
       </h1>
       <div id="salesWeekChart" style={{ width: "100%", height: "80%" }}></div>
-      {chartStatus === "loading" && <p>Cargando datos...</p>}
-      {chartStatus === "failed" && <p>Error al cargar los datos.</p>}
+      {chartStatus === "loading" && (
+        <p style={{ textAlign: "center", fontSize: "16px" }}>Cargando datos...</p>
+      )}
+      {chartStatus === "failed" && (
+        <p style={{ textAlign: "center", fontSize: "16px" }}>
+          Error al cargar los datos.
+        </p>
+      )}
     </div>
   );
 };

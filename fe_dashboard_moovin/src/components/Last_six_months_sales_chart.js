@@ -18,10 +18,16 @@ const LastSixMonthsSalesChart = () => {
     if (chartData) {
       const salesChart = echarts.init(document.getElementById("salesChart"));
       const salesOptions = {
-        tooltip: {
-          trigger: "axis",
+        title: {
+          text: "Número de Ventas - Últimos 6 Meses",
+          left: "center",
+          textStyle: {
+            fontSize: 18,
+            fontWeight: "bold",
+            fontFamily: "'Arial', sans-serif",
+          },
         },
-
+        tooltip: { trigger: "axis" },
         legend: {
           data: ["Número de Ventas"],
           top: "5%",
@@ -41,7 +47,9 @@ const LastSixMonthsSalesChart = () => {
           {
             name: "Número de Ventas",
             type: "bar",
-            data: chartData.sales_amount.map((item) => item.value.toLocaleString("de-DE")),
+            data: chartData.sales_amount.map((item) =>
+              item.value.toLocaleString("de-DE")
+            ),
             itemStyle: { color: "#40e0d0" },
           },
         ],
@@ -50,9 +58,18 @@ const LastSixMonthsSalesChart = () => {
 
       const amountChart = echarts.init(document.getElementById("amountChart"));
       const amountOptions = {
+        title: {
+          text: "Total de Ventas en Colones - Últimos 6 Meses",
+          left: "center",
+          textStyle: {
+            fontSize: 18,
+            fontWeight: "bold",
+            fontFamily: "'Arial', sans-serif",
+          },
+        },
         tooltip: { trigger: "axis" },
         legend: {
-          data: ["Total de Ventas en colones"],
+          data: ["Total de Ventas en Colones"],
           top: "5%",
           left: "center",
           textStyle: { color: "#008b8b" },
@@ -68,9 +85,11 @@ const LastSixMonthsSalesChart = () => {
         },
         series: [
           {
-            name: "Total de Ventas en colones",
+            name: "Total de Ventas en Colones",
             type: "bar",
-            data: chartData.amount_data.map((item) => item.value.toLocaleString("de-DE")),
+            data: chartData.amount_data.map((item) =>
+              item.value.toLocaleString("de-DE")
+            ),
             itemStyle: { color: "#20b2aa" },
           },
         ],
@@ -84,26 +103,31 @@ const LastSixMonthsSalesChart = () => {
       style={{
         backgroundColor: "white",
         borderRadius: "10px",
-        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.45)",
+        border: "1px solid rgba(58, 57, 57, 0.4)",
         width: "80%",
         justifySelf: "center",
         height:"90%"
-
       }}
     >
       <h1
         style={{
-          color: "#004d40",
+          color: "#302e2e",
           textAlign: "center",
           marginBottom: "20px",
           fontFamily: "system-ui",
-          color: "#302e2e",
-
         }}
       >
         Reporte de Ventas - Últimos 6 Meses
       </h1>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width:"100%",height:"90%"}}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          width: "100%",
+          height: "90%",
+        }}
+      >
         <div id="salesChart" style={{ width: "100%", height: "100%" }}></div>
         <div id="amountChart" style={{ width: "100%", height: "100%" }}></div>
       </div>

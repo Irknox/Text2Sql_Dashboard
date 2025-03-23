@@ -34,10 +34,10 @@ export default function PDVPage() {
         >
           <AC_users_cards />
         </Box>
-        <Box gridColumn="1" sx={{ width: "100%", height: "350px" }}>
+        <Box gridColumn="1" sx={{ width: "100%", height: "450px" }}>
           <AC_provinces_prepay_weekly />
         </Box>
-        <Box gridColumn="1" sx={{ width: "100%", height: "350px" }}>
+        <Box gridColumn="1" sx={{ width: "100%", height: "450px" }}>
           <AC_provinces_postpay_weekly />
         </Box>
         <Box gridColumn="1 / span 2" width="100%">

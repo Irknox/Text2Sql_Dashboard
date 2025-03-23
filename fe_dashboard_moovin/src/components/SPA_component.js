@@ -20,23 +20,39 @@ const SPA_component = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Cargando datos...</div>;
   }
 
   const chartOptions = {
     title: {
-      text: "SIMs Vendidas y Activadas por Provincia",
+      text: "Número de SIMs Vendidas y Activadas por Provincia",
       left: "center",
+      textStyle: {
+        fontFamily: "Roboto, sans-serif",
+        fontWeight: "bold",
+        fontSize: 18,
+        color: "#333",
+      },
     },
     tooltip: {
       trigger: "axis",
       axisPointer: {
         type: "shadow",
       },
+      textStyle: {
+        fontFamily: "Arial, sans-serif",
+        fontSize: 11,
+        top:'5%'
+      },
     },
     legend: {
-      data: ["SIM Vendidas", "SIM Activadas"],
+      data: ["SIMs Vendidas", "SIMs Activadas"],
       top: "10%",
+      textStyle: {
+        fontFamily: "Roboto, sans-serif",
+        fontSize: 14,
+        color: "#333",
+      },
     },
     grid: {
       left: "3%",
@@ -53,16 +69,19 @@ const SPA_component = () => {
     },
     yAxis: {
       type: "value",
+      axisLabel: {
+        formatter: "{value}",
+      },
     },
     series: [
       {
-        name: "SIM Vendidas",
+        name: "SIMs Vendidas",
         type: "bar",
         data: data.map((item) => item.vendidas),
         barWidth: "30%",
       },
       {
-        name: "SIM Activadas",
+        name: "SIMs Activadas",
         type: "bar",
         data: data.map((item) => item.activadas),
         barWidth: "30%",
@@ -77,7 +96,8 @@ const SPA_component = () => {
         height: "100%",
         backgroundColor: "#f4f4f4",
         borderRadius: "10px",
-        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.45)",
+        border: "1px solid rgba(58, 57, 57, 0.4)",
         justifySelf: "left",
         alignSelf: "center",
       }}
