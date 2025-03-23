@@ -6,7 +6,7 @@ const AC_active_users_weekly = () => {
   const [prepayData, setPrepayData] = useState([]);
   const [postpayData, setPostpayData] = useState([]);
 
-  const chartRef = useRef(null); // Declarar la referencia aquí
+  const chartRef = useRef(null);
 
   useEffect(() => {
     AC_Services.get_prepay_active_weekly()
@@ -33,14 +33,24 @@ const AC_active_users_weekly = () => {
     const myChart = echarts.init(chartDom);
 
     const xAxisData = prepayData.map((item) => `Semana ${item.semana}`);
-
     const prepayValues = prepayData.map((item) => item.cantidad);
     const postpayValues = postpayData.map((item) => item.cantidad);
 
     const option = {
       title: {
-        text: "Usuarios Activos últimos 2 meses",
+        text: "Usuarios Activos por Semana - Últimos 2 Meses",
+        subtext: "Comparación entre Usuarios Prepago y Postpago",
         left: "center",
+        textStyle: {
+          fontSize: 18,
+          fontWeight: "bold",
+          fontFamily: "'Arial', sans-serif",
+        },
+        subtextStyle: {
+          fontSize: 14,
+          fontStyle: "italic",
+          fontFamily: "'Arial', sans-serif",
+        },
       },
       tooltip: {
         trigger: "axis",
@@ -48,6 +58,10 @@ const AC_active_users_weekly = () => {
       legend: {
         data: ["Usuarios Prepago", "Usuarios Postpago"],
         top: "bottom",
+        textStyle: {
+          fontSize: 14,
+          fontFamily: "'Arial', sans-serif",
+        },
       },
       toolbox: {
         feature: {
@@ -60,10 +74,22 @@ const AC_active_users_weekly = () => {
         type: "category",
         data: xAxisData,
         splitLine: { show: false },
+        axisLabel: {
+          fontSize: 12,
+          fontFamily: "'Arial', sans-serif",
+        },
       },
       yAxis: {
         type: "value",
         name: "Usuarios Activos",
+        nameTextStyle: {
+          fontSize: 14,
+          fontFamily: "'Arial', sans-serif",
+        },
+        axisLabel: {
+          fontSize: 12,
+          fontFamily: "'Arial', sans-serif",
+        },
       },
       series: [
         {
@@ -108,11 +134,12 @@ const AC_active_users_weekly = () => {
       style={{
         backgroundColor: "#f4f4f4",
         borderRadius: "10px",
-        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.45)",
+        border: "1px solid rgba(58, 57, 57, 0.4)",
         justifySelf: "center",
         width: "85%",
         height: "350px",
-        padding:"20px"
+        padding: "20px",
       }}
     ></div>
   );

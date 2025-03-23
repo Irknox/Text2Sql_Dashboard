@@ -26,11 +26,36 @@ const RPH_componente = () => {
       const option = {
         title: {
           text: "Ventas de Recargas por Hora",
+          subtext: "Análisis de ventas de recargas durante el día, segmentado por hora",
+          left: "center",
+          textStyle: {
+            fontFamily: "Roboto, sans-serif",
+            fontWeight: "bold",
+            fontSize: 18,
+            color: "#333",
+          },
+          subtextStyle: {
+            fontFamily: "Roboto, sans-serif",
+            fontSize: 14,
+            color: "#666",
+          },
         },
-        tooltip: {},
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "shadow",
+          },
+          textStyle: {
+            fontFamily: "Arial, sans-serif",
+            fontSize: 12,
+          },
+        },
         xAxis: {
           type: "category",
           data: data.map((item) => item.hora),
+          axisLabel: {
+            interval: 0,
+          },
         },
         yAxis: {
           type: "value",
@@ -63,7 +88,8 @@ const RPH_componente = () => {
         height: "100%",
         backgroundColor: "#f4f4f4",
         borderRadius: "10px",
-        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.45)",
+        border: "1px solid rgba(58, 57, 57, 0.4)",
         justifySelf: "left",
         alignSelf: "center",
       }}

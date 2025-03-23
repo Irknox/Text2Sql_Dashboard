@@ -23,6 +23,21 @@ const AC_provinces_prepay_weekly = () => {
     const semanas = Array.from({ length: 17 }, (_, i) => `Semana ${i + 1}`);
 
     const option = {
+      title: {
+        text: "Prepagos Activos Semanales por Provincia",
+        subtext: "Datos semanales de usuarios por provincia",
+        left: "center",
+        top: "8%",
+        textStyle: {
+          fontSize: 18,
+          fontWeight: "bold",
+          color: "#333"
+        },
+        subtextStyle: {
+          fontSize: 14,
+          color: "#666"
+        },
+      },
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -190,7 +205,8 @@ const AC_provinces_prepay_weekly = () => {
         display:"flex",
         backgroundColor: "#f4f4f4",
         borderRadius: "10px",
-        boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.45)",
+        border: "1px solid rgba(58, 57, 57, 0.4)",
         width: "95%",
         height: "100%",
         justifySelf: "right",

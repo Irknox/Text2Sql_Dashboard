@@ -25,20 +25,35 @@ const VP_component = () => {
     const options = {
         title: {
             text: 'Ventas Acumuladas por Provincia',
-            left: 'center'
+            left: 'center',
+            textStyle: {
+                fontFamily: 'Roboto, sans-serif',
+                fontWeight: 'bold',
+                fontSize: 18,
+                color: '#333' // Color de texto más profesional
+            }
         },
         tooltip: {
             trigger: 'item',
             formatter: (params) => {
-                // Formatear el valor con puntos y comas en el tooltip😎
+                // Formatear el valor con puntos y comas en el tooltip
                 const formattedValue = params.value.toLocaleString("es-ES");
                 return `${params.name}: ${formattedValue} (${params.percent.toFixed(2)}%)`;
+            },
+            textStyle: {
+                fontFamily: 'Arial, sans-serif', // Cambié la fuente del tooltip
+                fontSize: 12
             }
         },
         legend: {
             orient: 'vertical',
             left: 'right',
-            data: data.map(item => item.provincia)
+            data: data.map(item => item.provincia),
+            textStyle: {
+                fontFamily: 'Roboto, sans-serif',
+                fontSize: 14,
+                color: '#333'
+            }
         },
         series: [
             {
@@ -57,7 +72,6 @@ const VP_component = () => {
             }
         ]
     };
-    
 
     if (loading) return <Typography>Cargando datos...</Typography>;
     if (error) return <Typography>Error al cargar datos: {error}</Typography>;
@@ -69,9 +83,10 @@ const VP_component = () => {
             backgroundColor: '#f4f4f4',
             borderRadius: '10px',
             padding: '20px',
-            boxShadow: '0px 4px 12px rgba(0,0,0,0.1)',
-            justifySelf:"right",
-            alignSelf:"center"
+            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.45)",
+            border: "1px solid rgba(58, 57, 57, 0.4)",
+            justifySelf: "right",
+            alignSelf: "center"
         }}>
             <ReactECharts option={options} style={{ width: '100%', height: '100%' }} />
         </div>
