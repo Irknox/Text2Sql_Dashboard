@@ -82,7 +82,7 @@ const Sales_week = () => {
         width: "90%",
         justifySelf: "center",
         justifyContent:"center",
-        height: "100%",
+        height: "80%",
       }}
     >
       <h1 style={{ fontFamily: "system-ui", color: "#302e2e", justifySelf:"center" }}>
